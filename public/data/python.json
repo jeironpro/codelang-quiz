@@ -1,0 +1,152 @@
+[
+  {
+    "id": "py-001",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "print(type([]).__name__)",
+    "opciones": {
+      "A": "list",
+      "B": "array",
+      "C": "dict",
+      "D": "tuple"
+    },
+    "respuesta": "A",
+    "explicacion": "[] crea una lista, cuyo tipo se llama 'list'."
+  },
+  {
+    "id": "py-002",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Cuál es el resultado?",
+    "codigo": "print(5 // 2)",
+    "opciones": {
+      "A": "2.5",
+      "B": "2",
+      "C": "3",
+      "D": "2.0"
+    },
+    "respuesta": "B",
+    "explicacion": "El operador // realiza una división entera, descartando el resto decimal."
+  },
+  {
+    "id": "py-003",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo se define una función en Python?",
+    "codigo": "",
+    "opciones": {
+      "A": "def mi_funcion():",
+      "B": "function mi_funcion():",
+      "C": "func mi_funcion()",
+      "D": "let mi_funcion = ()"
+    },
+    "respuesta": "A",
+    "explicacion": "En Python las funciones se declaran con la palabra clave def seguida de la firma y ':'."
+  },
+  {
+    "id": "py-004",
+    "dificultad": "facil",
+    "tipo": "bug",
+    "pregunta": "¿Qué impide que este bucle termine?",
+    "codigo": "n = 10\nwhile n > 0:\n    print(n)",
+    "opciones": {
+      "A": "Falta restar a n dentro del bucle",
+      "B": "print lanza un error",
+      "C": "La condición es falsa",
+      "D": "Falta importar math"
+    },
+    "respuesta": "A",
+    "explicacion": "n nunca disminuye, por lo que la condición siempre se cumple y el bucle es infinito."
+  },
+  {
+    "id": "py-005",
+    "dificultad": "media",
+    "tipo": "output",
+    "pregunta": "¿Qué devuelve?",
+    "codigo": "print([x * 2 for x in range(3)])",
+    "opciones": {
+      "A": "[0, 2, 4]",
+      "B": "[2, 4, 6]",
+      "C": "[0, 1, 2]",
+      "D": "0, 2, 4"
+    },
+    "respuesta": "A",
+    "explicacion": "La compresión de lista multiplica por 2 cada valor de range(3) = 0,1,2, dando [0, 2, 4]."
+  },
+  {
+    "id": "py-006",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué diferencia hay entre una lista y una tupla?",
+    "codigo": "",
+    "opciones": {
+      "A": "La tupla es inmutable",
+      "B": "La lista es inmutable",
+      "C": "Son exactamente iguales",
+      "D": "La tupla no puede tener números"
+    },
+    "respuesta": "A",
+    "explicacion": "Las tuplas no se pueden modificar tras su creación; las listas sí lo permiten."
+  },
+  {
+    "id": "py-007",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Que error se produce aquí?",
+    "codigo": "d = {'a': 1}\nprint(d['b'])",
+    "opciones": {
+      "A": "KeyError",
+      "B": "IndexError",
+      "C": "TypeError",
+      "D": "ValueError"
+    },
+    "respuesta": "A",
+    "explicacion": "Acceder a una clave inexistente en un diccionario lanza KeyError. Para evitarlo se usa .get()."
+  },
+  {
+    "id": "py-008",
+    "dificultad": "dificil",
+    "tipo": "output",
+    "pregunta": "¿Cuál es la salida?",
+    "codigo": "print(False == 0)",
+    "opciones": {
+      "A": "True",
+      "B": "False",
+      "C": "0",
+      "D": "None"
+    },
+    "respuesta": "A",
+    "explicacion": "En Python, False es igual a 0 por herencia de bool sobre int, por lo que la comparación es True."
+  },
+  {
+    "id": "py-009",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Para qué se usa la palabra clave 'is'?",
+    "codigo": "",
+    "opciones": {
+      "A": "Comparar identidad (mismo objeto)",
+      "B": "Comparar el valor numérico",
+      "C": "Declarar una variable local",
+      "D": "Importar un módulo"
+    },
+    "respuesta": "A",
+    "explicacion": "is compara si dos referencias apuntan al mismo objeto, a diferencia de == que compara el contenido."
+  },
+  {
+    "id": "py-010",
+    "dificultad": "dificil",
+    "tipo": "bug",
+    "pregunta": "¿Qué problema tiene este código?",
+    "codigo": "def suma(a, lista=[]):\n    lista.append(a)\n    return lista",
+    "opciones": {
+      "A": "El argumento mutable por defecto se comparte entre llamadas",
+      "B": "Falta el decorador @staticmethod",
+      "C": "No se puede pasar un número",
+      "D": "Necesita un punto y coma"
+    },
+    "respuesta": "A",
+    "explicacion": "Los defaults se evalúan una sola vez; la misma lista se acumula entre llamadas. Por eso se usa None como default."
+  }
+]

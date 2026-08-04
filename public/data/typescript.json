@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ts-001",
+    "dificultad": "facil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué aporta TypeScript sobre JavaScript?",
+    "codigo": "",
+    "opciones": {
+      "A": "Tipado estático opcional",
+      "B": "Un nuevo lenguaje interpretado por el navegador",
+      "C": "Eliminación total de JavaScript",
+      "D": "Soporte de bases de datos"
+    },
+    "respuesta": "A",
+    "explicacion": "TypeScript añade un sistema de tipos en tiempo de compilación; el navegador no lo ejecuta directamente."
+  },
+  {
+    "id": "ts-002",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cuál es la forma de declarar un parámetro tipado?",
+    "codigo": "",
+    "opciones": {
+      "A": "function saluda(nombre: string)",
+      "B": "function saluda(nombre: tipo string)",
+      "C": "function saluda(string nombre)",
+      "D": "function string saluda(nombre)"
+    },
+    "respuesta": "A",
+    "explicacion": "En TypeScript el tipo va después del nombre del parámetro separado por dos puntos."
+  },
+  {
+    "id": "ts-003",
+    "dificultad": "facil",
+    "tipo": "bug",
+    "pregunta": "¿Por qué falla esta compilación?",
+    "codigo": "let edad: number = 25;\nedad = \"veinticinco\";",
+    "opciones": {
+      "A": "No se puede asignar un string a una variable number",
+      "B": "Falta el punto y coma",
+      "C": "number no existe en TypeScript",
+      "D": "No se puede usar let"
+    },
+    "respuesta": "A",
+    "explicacion": "El compilador invalida asignar un string a una variable declarada como number."
+  },
+  {
+    "id": "ts-004",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué representa este tipo?",
+    "codigo": "type Respuesta = string | null;",
+    "opciones": {
+      "A": "Un valor que es string o null",
+      "B": "Un string que puede ser undefined",
+      "C": "Un array de strings",
+      "D": "Un tipo genérico obligatorio"
+    },
+    "respuesta": "A",
+    "explicacion": "El símbolo | es una unión de tipos: Respuesta acepta string o null."
+  },
+  {
+    "id": "ts-005",
+    "dificultad": "media",
+    "tipo": "output",
+    "pregunta": "¿Qué sucede cuando se compila este código?",
+    "codigo": "const num: number = 10;\nconsole.log(num.toFixed(2));",
+    "opciones": {
+      "A": "Se imprime '10.00'",
+      "B": "Se imprime '10.2'",
+      "C": "Da un error de tipos",
+      "D": "Se imprime '10'"
+    },
+    "respuesta": "A",
+    "explicacion": "toFixed(2) formatea el número con dos decimales: '10.00'."
+  },
+  {
+    "id": "ts-006",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Qué indica este error de compilación?",
+    "codigo": "function f(x: number): number {\n  return x + \"a\";\n}",
+    "opciones": {
+      "A": "El retorno string no coincide con el tipo number declarado",
+      "B": "Falta tipar el parámetro",
+      "C": "number + string lanza en runtime",
+      "D": "La función necesita async"
+    },
+    "respuesta": "A",
+    "explicacion": "x + \"a\" produce un string, que no coincide con el tipo de retorno number."
+  },
+  {
+    "id": "ts-007",
+    "dificultad": "dificil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Para qué sirve una interfaz en TypeScript?",
+    "codigo": "",
+    "opciones": {
+      "A": "Describir la forma de un objeto",
+      "B": "Crear objetos ejecutables",
+      "C": "Importar módulos",
+      "D": "Controlar el flujo if/else"
+    },
+    "respuesta": "A",
+    "explicacion": "Las interfaces definen contratos de forma (propiedades y métodos) para objetos, funciones y clases."
+  },
+  {
+    "id": "ts-008",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué hace el comando 'tsc' respecto a los tipos?",
+    "codigo": "",
+    "opciones": {
+      "A": "Los compila y los elimina al generar JavaScript",
+      "B": "Los ejecuta en el navegador",
+      "C": "Los convierte en CSS",
+      "D": "Los hace obligatorios en runtime"
+    },
+    "respuesta": "A",
+    "explicacion": "tsc elimina el tipado durante la compilación: los tipos solo existen en tiempo de desarrollo, no en el código emitido."
+  }
+]

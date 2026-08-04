@@ -8,6 +8,9 @@ export const CATALOGO = [
   { id: 'html', nombre: 'HTML', color: 'lavender' },
   { id: 'css', nombre: 'CSS', color: 'mint' },
   { id: 'sql', nombre: 'SQL', color: 'accent-2' },
+  { id: 'java', nombre: 'Java', color: 'accent-3' },
+  { id: 'go', nombre: 'Go', color: 'mint' },
+  { id: 'rust', nombre: 'Rust', color: 'accent-3' },
 ];
 
 // Carga el dataset completo de todos los lenguajes en paralelo.
