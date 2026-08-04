@@ -1,9 +1,14 @@
-// Componente raiz (esqueleto base del proyecto).
+import { BrowserRouter } from 'react-router-dom';
+import { QuizProvider } from './context/QuizContext';
+import AppRoutes from './routes';
+
+// Componente raiz: proveedor de contexto + enrutado.
 export default function App() {
   return (
-    <main>
-      <h1>Codelang Quiz</h1>
-      <p>Plataforma de preguntas de programacion. En construccion.</p>
-    </main>
+    <BrowserRouter>
+      <QuizProvider>
+        <AppRoutes />
+      </QuizProvider>
+    </BrowserRouter>
   );
 }
