@@ -1,4 +1,4 @@
-@import "./tokens.css";
+@import './tokens.css';
 
 /* Hallmark · genre: playful · macrostructure: Bento Grid · theme: Hum
  * states: default · hover · focus · active · disabled · loading · error · success
@@ -21,8 +21,8 @@ body {
   color: var(--color-ink);
   font-family: var(--font-body);
   font-feature-settings:
-    "ss01" on,
-    "cv11" on;
+    'ss01' on,
+    'cv11' on;
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
@@ -123,8 +123,7 @@ a {
   transition-duration: 70ms;
 }
 .btn:focus-visible {
-  outline: 3px solid
-    color-mix(in oklch, var(--btn-edge) 70%, var(--color-focus));
+  outline: 3px solid color-mix(in oklch, var(--btn-edge) 70%, var(--color-focus));
   outline-offset: 3px;
 }
 .btn[disabled] {
@@ -211,19 +210,11 @@ a {
 
 /* Acento color-shift en cards */
 .card__tint {
-  background: color-mix(
-    in oklch,
-    var(--card-accent, var(--color-accent)) 6%,
-    var(--color-paper)
-  );
+  background: color-mix(in oklch, var(--card-accent, var(--color-accent)) 6%, var(--color-paper));
   transition: background-color 220ms;
 }
 .card__tint:hover {
-  background: color-mix(
-    in oklch,
-    var(--card-accent, var(--color-accent)) 12%,
-    var(--color-paper)
-  );
+  background: color-mix(in oklch, var(--card-accent, var(--color-accent)) 12%, var(--color-paper));
 }
 
 /* Estrella de celebración (acierto) */
@@ -233,18 +224,8 @@ a {
   height: 24px;
   pointer-events: none;
   background:
-    linear-gradient(
-      90deg,
-      transparent 47%,
-      var(--color-accent-3) 47% 53%,
-      transparent 53%
-    ),
-    linear-gradient(
-      0deg,
-      transparent 47%,
-      var(--color-accent-3) 47% 53%,
-      transparent 53%
-    );
+    linear-gradient(90deg, transparent 47%, var(--color-accent-3) 47% 53%, transparent 53%),
+    linear-gradient(0deg, transparent 47%, var(--color-accent-3) 47% 53%, transparent 53%);
   animation: star-burst 420ms ease-out forwards;
 }
 @keyframes star-burst {
@@ -305,7 +286,7 @@ em,
     display: none;
   }
   .rise-in,
-  [class*="pulse"] {
+  [class*='pulse'] {
     animation: none;
   }
 }

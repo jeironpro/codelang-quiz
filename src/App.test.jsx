@@ -1,13 +1,11 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-import App from "./App";
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import App from './App';
 
-// Smoke test del esqueleto base de la app.
-describe("App (scaffold)", () => {
-  it("muestra el titulo de la aplicacion", () => {
+// Smoke test de la app: renderiza la barra de navegacion.
+describe('App', () => {
+  it('muestra la marca de la aplicacion en la barra de navegacion', () => {
     render(<App />);
-    expect(
-      screen.getByRole("heading", { name: /Codelang Quiz/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /codelang quiz/i })).toBeInTheDocument();
   });
 });

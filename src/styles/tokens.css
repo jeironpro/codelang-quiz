@@ -23,9 +23,9 @@
   --color-error: oklch(62% 0.22 25);
 
   /* Font */
-  --font-display: "Plus Jakarta Sans", ui-rounded, system-ui, sans-serif;
-  --font-body: "Plus Jakarta Sans", ui-rounded, system-ui, sans-serif;
-  --font-label: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: 'Plus Jakarta Sans', ui-rounded, system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', ui-rounded, system-ui, sans-serif;
+  --font-label: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Espaciado (escala 4pt) */
   --space-1: 0.25rem;
