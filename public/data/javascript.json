@@ -1,0 +1,152 @@
+[
+  {
+    "id": "js-001",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué muestra por consola este código?",
+    "codigo": "console.log(typeof null);",
+    "opciones": {
+      "A": "\"null\"",
+      "B": "\"object\"",
+      "C": "\"undefined\"",
+      "D": "null"
+    },
+    "respuesta": "B",
+    "explicacion": "Por un error histórico imposible de corregir, typeof null devuelve \"object\"."
+  },
+  {
+    "id": "js-002",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué resultado imprime este código?",
+    "codigo": "console.log(0.1 + 0.2 === 0.3);",
+    "opciones": {
+      "A": "true",
+      "B": "false",
+      "C": "undefined",
+      "D": "0.3"
+    },
+    "respuesta": "B",
+    "explicacion": "La suma en punto flotante binario da un resultado ligeramente distinto, por eso no es igual a 0.3."
+  },
+  {
+    "id": "js-003",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cuál es la forma correcta de declarar una constante?",
+    "codigo": "",
+    "opciones": {
+      "A": "const nombre = 5;",
+      "B": "variable nombre = 5;",
+      "C": "let nombre = 5; y reasignarla",
+      "D": "Int nombre = 5;"
+    },
+    "respuesta": "A",
+    "explicacion": "const declara una constante que no puede reasignarse. variable e Int no existen en JavaScript."
+  },
+  {
+    "id": "js-004",
+    "dificultad": "facil",
+    "tipo": "bug",
+    "pregunta": "¿Por qué falla este código?",
+    "codigo": "const nombre = \"Ana\";\nnombre = \"Luis\";",
+    "opciones": {
+      "A": "Falta un punto y coma",
+      "B": "No se puede reasignar una constante",
+      "C": "Las comillas dobles no están permitidas",
+      "D": "nombre es una palabra reservada"
+    },
+    "respuesta": "B",
+    "explicacion": "Las variables declaradas con const no permiten reasignación y lanzan un TypeError."
+  },
+  {
+    "id": "js-005",
+    "dificultad": "media",
+    "tipo": "output",
+    "pregunta": "¿Qué muestra esto?",
+    "codigo": "console.log([1, 2, 3].map(n => n * 2).join('-'));",
+    "opciones": {
+      "A": "2-4-6",
+      "B": "1-2-3",
+      "C": "246",
+      "D": "[2, 4, 6]"
+    },
+    "respuesta": "A",
+    "explicacion": "map genera un nuevo array [2, 4, 6] y join('-') lo convierte en el string '2-4-6'."
+  },
+  {
+    "id": "js-006",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué se obtiene al hacer una copia con el operador de propagación?",
+    "codigo": "const a = { x: 1 };\nconst b = { ...a };\nb.x = 2;\nconsole.log(a.x);",
+    "opciones": {
+      "A": "2",
+      "B": "1",
+      "C": "undefined",
+      "D": "0"
+    },
+    "respuesta": "B",
+    "explicacion": "... crea una copia superficial. Modificar b no afecta a a porque las claves se copiaron por valor."
+  },
+  {
+    "id": "js-007",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Por qué este bucle no se detiene?",
+    "codigo": "let i = 0;\nwhile (i < 10) {\n  console.log(i);\n}",
+    "opciones": {
+      "A": "Falta incrementar i dentro del bucle",
+      "B": "La condición es incorrecta",
+      "C": "while requiere un for",
+      "D": "console.log detiene el bucle"
+    },
+    "respuesta": "A",
+    "explicacion": "i nunca cambia, así que la condición i < 10 siempre es verdadera y el bucle es infinito."
+  },
+  {
+    "id": "js-008",
+    "dificultad": "dificil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código con clausura?",
+    "codigo": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100);\n}",
+    "opciones": {
+      "A": "0 1 2",
+      "B": "3 3 3",
+      "C": "1 2 3",
+      "D": "0 0 0"
+    },
+    "respuesta": "B",
+    "explicacion": "var tiene ámbito de función, así que las tres callbacks comparten la misma i, que al ejecutarse vale 3. Con let imprimiría 0 1 2."
+  },
+  {
+    "id": "js-009",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Cuál es el resultado de esta operación de tipos?",
+    "codigo": "console.log(1 + \"2\" + 3);",
+    "opciones": {
+      "A": "6",
+      "B": "\"123\"",
+      "C": "\"15\"",
+      "D": "Number NaN"
+    },
+    "respuesta": "B",
+    "explicacion": "1 + \"2\" produce el string \"12\" por coerción; luego \"12\" + 3 concatena y da \"123\"."
+  },
+  {
+    "id": "js-010",
+    "dificultad": "dificil",
+    "tipo": "bug",
+    "pregunta": "¿Qué devuelve esta promesa si la llamada a la API falla?",
+    "codigo": "fetch('/api').then(r => r.json()).catch(e => console.log(e));",
+    "opciones": {
+      "A": "Se lanza una excepción sin controlar",
+      "B": "El error se registra por consola",
+      "C": "Se devuelve undefined a la cadena",
+      "D": "El programa se detiene"
+    },
+    "respuesta": "B",
+    "explicacion": "El catch captura el rechazo y ejecuta la callback para el error sin interrumpir el resto del programa."
+  }
+]

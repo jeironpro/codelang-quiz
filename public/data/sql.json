@@ -1,0 +1,122 @@
+[
+  {
+    "id": "sql-001",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo seleccionas todas las columnas de una tabla?",
+    "codigo": "",
+    "opciones": {
+      "A": "SELECT * FROM usuarios;",
+      "B": "GET ALL FROM usuarios;",
+      "C": "SHOW usuarios;",
+      "D": "READ usuarios;"
+    },
+    "respuesta": "A",
+    "explicacion": "SELECT * trae todas las columnas y FROM indica la tabla consultada."
+  },
+  {
+    "id": "sql-002",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué cláusula filtra las filas devueltas?",
+    "codigo": "",
+    "opciones": {
+      "A": "WHERE",
+      "B": "FILTER",
+      "C": "HAVING sol·lo",
+      "D": "GROUP BY"
+    },
+    "respuesta": "A",
+    "explicacion": "WHERE filtra filas según una condición antes de agrupar; FILTER no es SQL estándar."
+  },
+  {
+    "id": "sql-003",
+    "dificultad": "facil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué es una clave primaria (PRIMARY KEY)?",
+    "codigo": "",
+    "opciones": {
+      "A": "Un identificador único para cada fila",
+      "B": "Un índice de texto",
+      "C": "Una restricción solo para fechas",
+      "D": "Una contraseña de la tabla"
+    },
+    "respuesta": "A",
+    "explicacion": "La primary key identifica de forma única cada fila y no admite valores duplicados ni NULL."
+  },
+  {
+    "id": "sql-004",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Por qué falla esta consulta?",
+    "codigo": "SELECT nombre, edad FROM usuarios\nWHERE apellido = Juan;",
+    "opciones": {
+      "A": "El valor de texto va entre comillas",
+      "B": "WHERE va antes de SELECT",
+      "C": "Falta GROUP BY",
+      "D": "nombre y edad no existen"
+    },
+    "respuesta": "A",
+    "explicacion": "Los valores de tipo texto deben ir entre comillas ('Juan'). Sin comillas se interpreta como columna."
+  },
+  {
+    "id": "sql-005",
+    "dificultad": "media",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo ordenas los resultados por edad de forma descendente?",
+    "codigo": "",
+    "opciones": {
+      "A": "ORDER BY edad DESC",
+      "B": "SORT BY edad DESC",
+      "C": "ORDER edad DOWN",
+      "D": "GROUP BY edad DESC"
+    },
+    "respuesta": "A",
+    "explicacion": "ORDER BY ordena y DESC indica descendente; ASC (default) ascendente."
+  },
+  {
+    "id": "sql-006",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué hace un JOIN?",
+    "codigo": "",
+    "opciones": {
+      "A": "Combina filas de dos tablas según una condición",
+      "B": "Crea una nueva base de datos",
+      "C": "Elimina filas duplicadas",
+      "D": "Suma columnas numéricas"
+    },
+    "respuesta": "A",
+    "explicacion": "JOIN relaciona filas de dos o más tablas usando una clave en común (por ejemplo, un id)."
+  },
+  {
+    "id": "sql-007",
+    "dificultad": "dificil",
+    "tipo": "bug",
+    "pregunta": "¿Qué devuelve esta consulta con un valor NULL?",
+    "codigo": "SELECT nombre FROM usuarios\nWHERE id = NULL;",
+    "opciones": {
+      "A": "Ninguna fila, porque NULL no se compara con =",
+      "B": "Todas las filas con id nulo",
+      "C": "Un error de sintaxis",
+      "D": "Las filas con id = 0"
+    },
+    "respuesta": "A",
+    "explicacion": "NULL no se puede comparar con =; para ello se usa IS NULL o IS NOT NULL."
+  },
+  {
+    "id": "sql-008",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Cuál es la diferencia entre HAVING y WHERE?",
+    "codigo": "",
+    "opciones": {
+      "A": "WHERE filtra filas; HAVING filtra grupos tras agrupar",
+      "B": "Ambos son idénticos",
+      "C": "WHERE solo para SELECT *",
+      "D": "HAVING filtra antes de agrupar"
+    },
+    "respuesta": "A",
+    "explicacion": "WHERE filtra filas individuales; HAVING se aplica a conjuntos agrupados, usado con funciones como COUNT."
+  }
+]

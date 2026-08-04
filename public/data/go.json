@@ -1,0 +1,137 @@
+[
+  {
+    "id": "go-001",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo se declara una variable que se infiere?",
+    "codigo": "",
+    "opciones": {
+      "A": "nombre := \"Ana\"",
+      "B": "var nombre = \"Ana\"",
+      "C": "let nombre = \"Ana\"",
+      "D": "const nombre = \"Ana\""
+    },
+    "respuesta": "A",
+    "explicacion": "El operador := declara e infiere el tipo dentro de una función."
+  },
+  {
+    "id": "go-002",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime?",
+    "codigo": "fmt.Println(10 % 3)",
+    "opciones": {
+      "A": "1",
+      "B": "3",
+      "C": "3.33",
+      "D": "0"
+    },
+    "respuesta": "A",
+    "explicacion": "El operador % devuelve el resto de la división entera: 10 % 3 = 1."
+  },
+  {
+    "id": "go-003",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué paquete se importa para imprimir en consola?",
+    "codigo": "",
+    "opciones": {
+      "A": "fmt",
+      "B": "io",
+      "C": "os",
+      "D": "print"
+    },
+    "respuesta": "A",
+    "explicacion": "El paquete estándar fmt proporciona Println y otras funciones de formato."
+  },
+  {
+    "id": "go-004",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué representa una goroutine?",
+    "codigo": "",
+    "opciones": {
+      "A": "Una función que se ejecuta en paralelo de forma ligera",
+      "B": "Un tipo de dato estructurado",
+      "C": "Un bucle de repetición",
+      "D": "Un paquete de tests"
+    },
+    "respuesta": "A",
+    "explicacion": "Las goroutines son funciones concurrentes gestionadas por el runtime, iniciadas con la palabra clave go."
+  },
+  {
+    "id": "go-005",
+    "dificultad": "media",
+    "tipo": "output",
+    "pregunta": "¿Cuál es el resultado?",
+    "codigo": "s := \"abc\"\nfmt.Println(len(s))",
+    "opciones": {
+      "A": "3",
+      "B": "1",
+      "C": "abc",
+      "D": "6"
+    },
+    "respuesta": "A",
+    "explicacion": "len devuelve el número de bytes del string; en ASCII coincide con el número de caracteres."
+  },
+  {
+    "id": "go-006",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Por qué no compila?",
+    "codigo": "func suma(a int, b int) int {\n  return a + b\n}\nvar resultado = suma(1, 2, 3)",
+    "opciones": {
+      "A": "Se pasan más argumentos de los que la función acepta",
+      "B": "Falta el paquete fmt",
+      "C": "int no es válido",
+      "D": "La función no tiene retorno"
+    },
+    "respuesta": "A",
+    "explicacion": "suma acepta dos ints; llamarla con tres argumentos es un error de compilación."
+  },
+  {
+    "id": "go-007",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué caracteriza a los punteros en Go?",
+    "codigo": "",
+    "opciones": {
+      "A": "Permiten modificar la variable original por referencia",
+      "B": "Son objetos complejos",
+      "C": "Guardan strings siempre",
+      "D": "Son opcionales para todo"
+    },
+    "respuesta": "A",
+    "explicacion": "Un puntero guarda la dirección de memoria y permite alterar el valor original de la variable."
+  },
+  {
+    "id": "go-008",
+    "dificultad": "dificil",
+    "tipo": "bug",
+    "pregunta": "¿Qué problema hay con este manejo de errores?",
+    "codigo": "import \"strconv\"\nvalor, _ := strconv.Atoi(\"abc\")",
+    "opciones": {
+      "A": "Se ignora el error con _ y no se detecta el fallo",
+      "B": "Atoi no existe",
+      "C": "No se puede importar strconv",
+      "D": "El compilador prohíbe _"
+    },
+    "respuesta": "A",
+    "explicacion": "El blank identifier _ descarta el error; si la conversión falla valor será 0 sin avisar."
+  },
+  {
+    "id": "go-009",
+    "dificultad": "dificil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Para qué sirve el operador 'defer'?",
+    "codigo": "",
+    "opciones": {
+      "A": "Retrasa la ejecución de una llamada hasta el final de la función",
+      "B": "Ejecuta una función en un hilo nuevo",
+      "C": "Duplica una variable",
+      "D": "Detiene el programa"
+    },
+    "respuesta": "A",
+    "explicacion": "defer ejecuta la llamada al terminar la función, útil para cerrar recursos como archivos."
+  }
+]

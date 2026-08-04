@@ -1,0 +1,122 @@
+[
+  {
+    "id": "css-001",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo se selecciona un elemento por su id en CSS?",
+    "codigo": "",
+    "opciones": {
+      "A": "#boton",
+      "B": ".boton",
+      "C": "boton",
+      "D": "@boton"
+    },
+    "respuesta": "A",
+    "explicacion": "El prefijo # selecciona por id; el punto . selecciona por clase."
+  },
+  {
+    "id": "css-002",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué propiedad cambia el color de fondo?",
+    "codigo": "",
+    "opciones": {
+      "A": "background-color",
+      "B": "color",
+      "C": "background-font",
+      "D": "fill"
+    },
+    "respuesta": "A",
+    "explicacion": "background-color define el color de fondo; color cambia el color del texto."
+  },
+  {
+    "id": "css-003",
+    "dificultad": "facil",
+    "tipo": "bug",
+    "pregunta": "¿Por qué esto no aplica el color al párrafo?",
+    "codigo": ".texto {\n  text-color: red;\n}",
+    "opciones": {
+      "A": "La propiedad correcta es color",
+      "B": "Falta un punto y coma",
+      "C": "El selector debe ser #texto",
+      "D": "red no existe"
+    },
+    "respuesta": "A",
+    "explicacion": "No existe text-color. El color del texto se define con la propiedad color."
+  },
+  {
+    "id": "css-004",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué significa display: flex?",
+    "codigo": "",
+    "opciones": {
+      "A": "Activa el modelo de caja flexible",
+      "B": "Oculta el elemento",
+      "C": "Convierte el texto en mayúsculas",
+      "D": "Fija la posición absoluta"
+    },
+    "respuesta": "A",
+    "explicacion": "flex activa el flexbox, que distribuye y alinea a los hijos de forma fluida."
+  },
+  {
+    "id": "css-005",
+    "dificultad": "media",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo centras horizontalmente un elemento con margin?",
+    "codigo": "",
+    "opciones": {
+      "A": "margin: 0 auto;",
+      "B": "margin: auto 0;",
+      "C": "margin: center;",
+      "D": "margin: 50% 0;"
+    },
+    "respuesta": "A",
+    "explicacion": "margin: 0 auto asigna cero vertical y auto horizontal, centrando el bloque si tiene un ancho definido."
+  },
+  {
+    "id": "css-006",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué hace la unidad 'em' en font-size?",
+    "codigo": "",
+    "opciones": {
+      "A": "Relativa al font-size del elemento padre",
+      "B": "Relativa al ancho de la pantalla",
+      "C": "Fija un tamaño en píxeles absolutos",
+      "D": "Relativa a la altura del viewport"
+    },
+    "respuesta": "A",
+    "explicacion": "em se calcula relativo al tamaño de fuente del elemento padre; rem lo hace respecto a la raíz."
+  },
+  {
+    "id": "css-007",
+    "dificultad": "dificil",
+    "tipo": "bug",
+    "pregunta": "¿Por qué el :hover no funciona en este enlace?",
+    "codigo": "a {\n  color: blue;\n}\na:visited {\n  color: purple;\n}\na:hover {\n  color: red;\n}",
+    "opciones": {
+      "A": ":hover debe ir antes de :visited en el orden de la cascada",
+      "B": "Falta importar un framework",
+      "C": ":visited anula siempre cualquier otro estado",
+      "D": "El selector debe ser a:hover:visited"
+    },
+    "respuesta": "A",
+    "explicacion": "Las pseudoclases de enlace tienen un orden de cascada (LVHA). Si :hover va después de :visited funciona correctamente."
+  },
+  {
+    "id": "css-008",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué ventaja tiene una media query para el responsive?",
+    "codigo": "",
+    "opciones": {
+      "A": "Aplica estilos según las características del dispositivo",
+      "B": "Carga solo imágenes optimizadas",
+      "C": "Comprime el CSS automáticamente",
+      "D": "Detecta el navegador del usuario"
+    },
+    "respuesta": "A",
+    "explicacion": "Las media queries aplican reglas según condiciones como el ancho de pantalla, ideal para diseño responsive."
+  }
+]

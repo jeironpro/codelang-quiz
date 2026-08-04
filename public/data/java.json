@@ -1,0 +1,152 @@
+[
+  {
+    "id": "java-001",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cuál es el punto de entrada de una aplicación Java?",
+    "codigo": "",
+    "opciones": {
+      "A": "public static void main(String[] args)",
+      "B": "function main()",
+      "C": "def main():",
+      "D": "start()"
+    },
+    "respuesta": "A",
+    "explicacion": "La JVM busca el método main estático con firma public static void main(String[] args)."
+  },
+  {
+    "id": "java-002",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué palabra clave se usa para crear un nuevo objeto?",
+    "codigo": "",
+    "opciones": {
+      "A": "new",
+      "B": "make",
+      "C": "create",
+      "D": "object"
+    },
+    "respuesta": "A",
+    "explicacion": "En Java los objetos se crean con el operador new seguido del constructor."
+  },
+  {
+    "id": "java-003",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "System.out.println(5 / 2);",
+    "opciones": {
+      "A": "2",
+      "B": "2.5",
+      "C": "2.0",
+      "D": "3"
+    },
+    "respuesta": "A",
+    "explicacion": "Con dos enteros la división es entera y descarta el resto: 5 / 2 es 2."
+  },
+  {
+    "id": "java-004",
+    "dificultad": "facil",
+    "tipo": "bug",
+    "pregunta": "¿Por qué no compila esta clase?",
+    "codigo": "public class Persona {\n  private String nombre;\n}",
+    "opciones": {
+      "A": "Compila sin problemas",
+      "B": "Falta un constructor",
+      "C": "nombre debe ser static",
+      "D": "Falta importar String"
+    },
+    "respuesta": "A",
+    "explicacion": "Es una clase válida con un campo privado; no requiere constructor obligatorio ni import de String."
+  },
+  {
+    "id": "java-005",
+    "dificultad": "media",
+    "tipo": "output",
+    "pregunta": "¿Qué devuelve la comparación?",
+    "codigo": "String a = \"hola\";\nString b = \"hola\";\nSystem.out.println(a == b);",
+    "opciones": {
+      "A": "true",
+      "B": "false",
+      "C": "Compila pero lanza excepción",
+      "D": "No se puede comparar strings con =="
+    },
+    "respuesta": "A",
+    "explicacion": "Por pooling de literales ambos apuntan al mismo objeto; == compara referencias y aquí son iguales. Con new String podría ser false."
+  },
+  {
+    "id": "java-006",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué es una interfaz en Java?",
+    "codigo": "",
+    "opciones": {
+      "A": "Un contrato de métodos sin implementación",
+      "B": "Una clase con campos privados",
+      "C": "Un tipo primitivo",
+      "D": "Un paquete de utilidades"
+    },
+    "respuesta": "A",
+    "explicacion": "Una interfaz define métodos abstractos que las clases deben implementar; declara el 'qué', no el 'cómo'."
+  },
+  {
+    "id": "java-007",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Qué error lanza este código al ejecutarse?",
+    "codigo": "int[] numeros = new int[3];\nSystem.out.println(numeros[5]);",
+    "opciones": {
+      "A": "ArrayIndexOutOfBoundsException",
+      "B": "NullPointerException",
+      "C": "NumberFormatException",
+      "D": "IndexOutOfMemoryError"
+    },
+    "respuesta": "A",
+    "explicacion": "Acceder a un índice fuera del tamaño del array (0-2) lanza ArrayIndexOutOfBoundsException."
+  },
+  {
+    "id": "java-008",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué permite la palabra clave 'final' en un método?",
+    "codigo": "",
+    "opciones": {
+      "A": "Evita que una subclase lo sobrescriba",
+      "B": "Lo convierte en abstracto",
+      "C": "Lo vuelve sincronizado",
+      "D": "Lo hace privado"
+    },
+    "respuesta": "A",
+    "explicacion": "Un método final no puede ser sobreescrito (override) por las clases hijas."
+  },
+  {
+    "id": "java-009",
+    "dificultad": "dificil",
+    "tipo": "output",
+    "pregunta": "¿Qué sucede al compilar?",
+    "codigo": "final int x = 10;\nx = 20;",
+    "opciones": {
+      "A": "Error de compilación: no se puede reasignar final",
+      "B": "Se imprime 20",
+      "C": "Lanza excepción en runtime",
+      "D": "Se imprime 10"
+    },
+    "respuesta": "A",
+    "explicacion": "Una variable final solo se asigna una vez; reasignarla es un error de compilación."
+  },
+  {
+    "id": "java-010",
+    "dificultad": "dificil",
+    "tipo": "bug",
+    "pregunta": "¿Cuál es el problema con este manejo de recursos?",
+    "codigo": "FileInputStream f = new FileInputStream(\"a.txt\");\nf.read();",
+    "opciones": {
+      "A": "El recurso no se cierra, provoca fugas",
+      "B": "read() no existe",
+      "C": "FileInputStream no puede leer",
+      "D": "No hay problema"
+    },
+    "respuesta": "A",
+    "explicacion": "Sin cerrar el stream se pierden recursos del sistema; se recomienda try-with-resources."
+  }
+]

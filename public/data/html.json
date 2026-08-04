@@ -1,0 +1,122 @@
+[
+  {
+    "id": "html-001",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué etiqueta se usa para el encabezado principal de la página?",
+    "codigo": "",
+    "opciones": {
+      "A": "<h1>",
+      "B": "<header>",
+      "C": "<head>",
+      "D": "<p>"
+    },
+    "respuesta": "A",
+    "explicacion": "<h1> es el encabezado semántico de nivel más alto; suele usarse una vez por página."
+  },
+  {
+    "id": "html-002",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué atributo indica el texto alternativo de una imagen?",
+    "codigo": "",
+    "opciones": {
+      "A": "alt",
+      "B": "title",
+      "C": "name",
+      "D": "src-alt"
+    },
+    "respuesta": "A",
+    "explicacion": "alt describe la imagen para lectores de pantalla y para cuando esta no puede cargarse."
+  },
+  {
+    "id": "html-003",
+    "dificultad": "facil",
+    "tipo": "concepto",
+    "pregunta": "¿Para qué sirve la etiqueta <nav>?",
+    "codigo": "",
+    "opciones": {
+      "A": "Agrupar los enlaces de navegación",
+      "B": "Poner un fondo de color",
+      "C": "Crear una tabla",
+      "D": "Insertar una imagen"
+    },
+    "respuesta": "A",
+    "explicacion": "<nav> marca semánticamente el bloque de enlaces de navegación principal."
+  },
+  {
+    "id": "html-004",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Por qué no se ve la imagen?",
+    "codigo": "<img source=\"foto.png\">",
+    "opciones": {
+      "A": "El atributo correcto es src, no source",
+      "B": "Falta el cierre con </img>",
+      "C": "Falta el atributo href",
+      "D": "Las imágenes requieren .jpg obligatoriamente"
+    },
+    "respuesta": "A",
+    "explicacion": "El atributo correcto para la ruta de imagen es src. source no existe en este contexto."
+  },
+  {
+    "id": "html-005",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Cuál es la diferencia entre <div> y <section>?",
+    "codigo": "",
+    "opciones": {
+      "A": "<section> tiene significado semántico; <div> es genérico",
+      "B": "<div> es semántico y <section> no",
+      "C": "No hay diferencia",
+      "D": "<section> solo sirve para formularios"
+    },
+    "respuesta": "A",
+    "explicacion": "section aporta semántica definiendo una sección de contenido; div es un contenedor sin significado."
+  },
+  {
+    "id": "html-006",
+    "dificultad": "media",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo enlazas una hoja de estilos externa?",
+    "codigo": "",
+    "opciones": {
+      "A": "<link rel=\"stylesheet\" href=\"estilos.css\">",
+      "B": "<style src=\"estilos.css\">",
+      "C": "<css href=\"estilos.css\">",
+      "D": "<script stylesheet=\"estilos.css\">"
+    },
+    "respuesta": "A",
+    "explicacion": "La etiqueta link con rel=\"stylesheet\" y el href apuntan a la hoja de estilos externa."
+  },
+  {
+    "id": "html-007",
+    "dificultad": "dificil",
+    "tipo": "bug",
+    "pregunta": "¿Cuál es el problema con este uso de <ul>?",
+    "codigo": "<ul><li>Uno<div>Dos</div></li></ul>",
+    "opciones": {
+      "A": "La etiqueta div no es un elemento permitido directo dentro de ul",
+      "B": "ul no puede contener li",
+      "C": "Falta <head>",
+      "D": "li debe ir vacío"
+    },
+    "respuesta": "A",
+    "explicacion": "ul solo debe contener li. Meter un div directamente dentro de ul invalida el documento; debería ir dentro del li."
+  },
+  {
+    "id": "html-008",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué elemento se recomienda como hijo directo de <table> para las filas de datos?",
+    "codigo": "",
+    "opciones": {
+      "A": "<tbody>",
+      "B": "<thead> dentro de tbody",
+      "C": "<tr> director, sin agrupación",
+      "D": "<cell>"
+    },
+    "respuesta": "A",
+    "explicacion": "tbody agrupa las filas de datos de la tabla y mejora la semántica y accesibilidad."
+  }
+]

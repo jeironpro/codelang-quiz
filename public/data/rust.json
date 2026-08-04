@@ -1,0 +1,152 @@
+[
+  {
+    "id": "rust-001",
+    "dificultad": "facil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué es el concepto clave de seguridad de la memoria en Rust?",
+    "codigo": "",
+    "opciones": {
+      "A": "Que cada valor tiene un propietario único",
+      "B": "Que no existe la memoria",
+      "C": "Que los punteros no se usan nunca",
+      "D": "Que todo es estático"
+    },
+    "respuesta": "A",
+    "explicacion": "La propiedad (ownership) garantiza que cada dato tiene un único dueño que libera la memoria al salir de ámbito."
+  },
+  {
+    "id": "rust-002",
+    "dificultad": "facil",
+    "tipo": "concepto",
+    "pregunta": "Por defecto, las variables en Rust son...",
+    "codigo": "",
+    "opciones": {
+      "A": "inmutables",
+      "B": "mutables",
+      "C": "globales",
+      "D": "constantes solo numéricas"
+    },
+    "respuesta": "A",
+    "explicacion": "Las variables son inmutables por defecto; hay que declararlas con mut para poder cambiarlas."
+  },
+  {
+    "id": "rust-003",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo se declara una variable mutable?",
+    "codigo": "",
+    "opciones": {
+      "A": "let mut contador = 0;",
+      "B": "let variable contador = 0;",
+      "C": "mut contador = 0;",
+      "D": "var contador = 0;"
+    },
+    "respuesta": "A",
+    "explicacion": "let mut indica que la variable puede cambiar de valor después de su declaración."
+  },
+  {
+    "id": "rust-004",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime?",
+    "codigo": "println!(\"{}\", 1 + 2);",
+    "opciones": {
+      "A": "3",
+      "B": "1 + 2",
+      "C": "\"3\"",
+      "D": "Sin salida"
+    },
+    "respuesta": "A",
+    "explicacion": "La macro println! formatea el valor con {} y evalúa la expresión 1 + 2 a 3."
+  },
+  {
+    "id": "rust-005",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Por qué el compilador rechaza este código?",
+    "codigo": "fn main() {\n  let s = String::from(\"hola\");\n  let s2 = s;\n  println!(\"{}\", s);\n}",
+    "opciones": {
+      "A": "s se mueve a s2 y ya no es válido usarlo después",
+      "B": "Falta importar String",
+      "C": "println! no acepta strings",
+      "D": "String::from no existe"
+    },
+    "respuesta": "A",
+    "explicacion": "Al mover s a s2, el propietario original queda inválido; usarlo lanza un error de ownership."
+  },
+  {
+    "id": "rust-006",
+    "dificultad": "media",
+    "tipo": "concepto",
+    "pregunta": "¿Qué son los borrows (préstamos) en Rust?",
+    "codigo": "",
+    "opciones": {
+      "A": "Referencias temporales sin tomar propiedad",
+      "B": "Copia de todos los datos",
+      "C": "Un tipo de bucle",
+      "D": "Un error de memoria"
+    },
+    "respuesta": "A",
+    "explicacion": "Un borrow (&T) presta una referencia al valor sin transferir la propiedad, permitiendo leer sin mover."
+  },
+  {
+    "id": "rust-007",
+    "dificultad": "media",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué tipo devuelve una función que no produce valor?",
+    "codigo": "fn limpia() { }",
+    "opciones": {
+      "A": "()",
+      "B": "void",
+      "C": "null",
+      "D": "None"
+    },
+    "respuesta": "A",
+    "explicacion": "Las funciones sin retorno devuelven el tipo unitario (), equivalente a no devolver nada."
+  },
+  {
+    "id": "rust-008",
+    "dificultad": "dificil",
+    "tipo": "bug",
+    "pregunta": "¿Cuál es el problema con dos borrows mutables?",
+    "codigo": "let mut x = 5;\nlet a = &mut x;\nlet b = &mut x;",
+    "opciones": {
+      "A": "Solo se permite un borrow mutable a la vez",
+      "B": "Se necesitan llaves",
+      "C": "x debe ser una constante",
+      "D": "El compilador lo acepta sin problema"
+    },
+    "respuesta": "A",
+    "explicacion": "Rust impide tener más de un borrow mutable simultáneo para garantizar la seguridad de la memoria en tiempo de compilación."
+  },
+  {
+    "id": "rust-009",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué es una 'enum' con variantes con datos (Option<T>)?",
+    "codigo": "",
+    "opciones": {
+      "A": "Un tipo que puede estar presente o vacío",
+      "B": "Un bucle infinito",
+      "C": "Un tipo numérico",
+      "D": "Un sinónimo de estructura"
+    },
+    "respuesta": "A",
+    "explicacion": "Option<T> es una enum con Some(T) y None, usada para manejar valores que pueden no existir de forma segura."
+  },
+  {
+    "id": "rust-010",
+    "dificultad": "dificil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este patrón match?",
+    "codigo": "let x = Some(5);\nmatch x {\n  Some(v) => println!(\"{}\", v),\n  None => println!(\"nada\"),\n}",
+    "opciones": {
+      "A": "5",
+      "B": "nada",
+      "C": "Some(5)",
+      "D": "None"
+    },
+    "respuesta": "A",
+    "explicacion": "x es Some(5), así que el match ejecuta la rama Some(v) e imprime el valor 5."
+  }
+]
