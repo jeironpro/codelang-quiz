@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Activar Corepack
+        run: corepack enable
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+
+      - name: Instalar dependencias
+        run: yarn install --immutable
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Verificar formato
+        run: yarn format:check
+
+      - name: Instalar herramientas de media (ImageMagick + Pillow)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+          pip3 install --quiet Pillow
+
+      - name: Tests
+        run: yarn test
+
+      - name: Build
+        run: yarn build
