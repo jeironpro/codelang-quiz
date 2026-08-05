@@ -11,7 +11,11 @@ node_modules/
 # Build
 dist/
 dist-ssr/
+dist-reels/
 *.local
+
+# Entorno local (credenciales de Instagram)
+.env
 
 # Logs
 logs/
