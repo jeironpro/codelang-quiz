@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuiz } from '../hooks/useQuiz';
 import { useQuizContext } from '../context/QuizContext';
@@ -7,7 +6,7 @@ import { OPCIONES } from '../utils/constants';
 import { puntosDe } from '../utils/scoring';
 
 // Pagina de la partida: muestra cada pregunta y las opciones A/B/C/D.
-// Solo muestra la respuesta correcta cuando el usuario falla.
+// Al responder muestra feedback y deja que el usuario continúe.
 export default function Quiz() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,25 +19,21 @@ export default function Quiz() {
     total,
     preguntaActual,
     score,
+    aciertos,
+    fallos,
     seleccionada,
     bloqueada,
-    respuestas,
     responder,
     continuar,
   } = useQuiz(preguntas, () => finalizar());
 
-  const registrarPartidaRef = useRef(registrarPartida);
-  registrarPartidaRef.current = registrarPartida;
-
   // Guarda la partida terminada y pasa a resultados.
   function finalizar() {
-    const aciertos = respuestas.filter((r) => r.esCorrecta).length;
-    const fallos = respuestas.length - aciertos;
-    registrarPartidaRef.current({
+    registrarPartida({
       aciertos,
       fallos,
       puntos: score,
-      total: respuestas.length,
+      total: preguntas.length,
       lenguaje: filtros.lenguaje,
       dificultad: filtros.dificultad,
     });
@@ -87,12 +82,11 @@ export default function Quiz() {
         <div className="quiz__opciones" role="group" aria-label="Opciones de respuesta">
           {OPCIONES.map((letra) => {
             const esCorrecta = letra === preguntaActual.respuesta;
-            const estaBloqueada = bloqueada;
 
             let clase = 'opcion';
             if (seleccionada === letra) clase += ' is-selected';
-            if (estaBloqueada && esCorrecta) clase += ' is-correct';
-            if (estaBloqueada && seleccionada === letra && !esCorrecta) {
+            if (bloqueada && esCorrecta) clase += ' is-correct';
+            if (bloqueada && seleccionada === letra && !esCorrecta) {
               clase += ' is-wrong';
             }
 

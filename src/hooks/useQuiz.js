@@ -23,6 +23,9 @@ export function useQuiz(preguntas, onTerminar) {
     [respuestas],
   );
 
+  const aciertos = useMemo(() => respuestas.filter((r) => r.esCorrecta).length, [respuestas]);
+  const fallos = useMemo(() => respuestas.length - aciertos, [respuestas, aciertos]);
+
   // Registra la seleccion y bloquea la pregunta para mostrar el feedback.
   // Tanto el acierto como el fallo dejan que el usuario lea la explicacion
   // y decida continuar; nunca avanza de forma automatica.
@@ -31,10 +34,7 @@ export function useQuiz(preguntas, onTerminar) {
       if (bloqueada || !preguntaActual) return;
       const esCorrecta = letra === preguntaActual.respuesta;
       setSeleccionada(letra);
-      setRespuestas((prev) => [
-        ...prev,
-        { ...preguntaActual, letra, esCorrecta, dificultad: preguntaActual.dificultad },
-      ]);
+      setRespuestas((prev) => [...prev, { ...preguntaActual, letra, esCorrecta }]);
       setBloqueada(true);
     },
     [bloqueada, preguntaActual],
@@ -52,23 +52,17 @@ export function useQuiz(preguntas, onTerminar) {
     setBloqueada(false);
   }, [indice, preguntas.length, onTerminar]);
 
-  const reiniciar = useCallback(() => {
-    setIndice(0);
-    setRespuestas([]);
-    setSeleccionada(null);
-    setBloqueada(false);
-  }, []);
-
   return {
     indice,
     total: preguntas.length,
     preguntaActual,
     score,
+    aciertos,
+    fallos,
     seleccionada,
     bloqueada,
     respuestas,
     responder,
     continuar,
-    reiniciar,
   };
 }
