@@ -23,14 +23,9 @@ export function useQuiz(preguntas, onTerminar) {
     [respuestas],
   );
 
-  // Registra la seleccion. Si es correcta avanza de inmediato (no se muestra
-  // la explicacion); si falla, deja que el usuario la lea y pulse continuar.
-  const avanzar = useCallback(() => {
-    setIndice((i) => i + 1);
-    setSeleccionada(null);
-    setBloqueada(false);
-  }, []);
-
+  // Registra la seleccion y bloquea la pregunta para mostrar el feedback.
+  // Tanto el acierto como el fallo dejan que el usuario lea la explicacion
+  // y decida continuar; nunca avanza de forma automatica.
   const responder = useCallback(
     (letra) => {
       if (bloqueada || !preguntaActual) return;
@@ -40,30 +35,22 @@ export function useQuiz(preguntas, onTerminar) {
         ...prev,
         { ...preguntaActual, letra, esCorrecta, dificultad: preguntaActual.dificultad },
       ]);
-
-      if (esCorrecta) {
-        setBloqueada(true);
-        const esUltima = indice >= preguntas.length - 1;
-        if (esUltima) {
-          onTerminar?.();
-        } else {
-          avanzar();
-        }
-      } else {
-        setBloqueada(true);
-      }
+      setBloqueada(true);
     },
-    [bloqueada, preguntaActual, indice, preguntas.length, onTerminar, avanzar],
+    [bloqueada, preguntaActual],
   );
 
+  // Avanza a la siguiente pregunta o termina la partida si era la ultima.
   const continuar = useCallback(() => {
     const esUltima = indice >= preguntas.length - 1;
     if (esUltima) {
       onTerminar?.();
       return;
     }
-    avanzar();
-  }, [indice, preguntas.length, onTerminar, avanzar]);
+    setIndice((i) => i + 1);
+    setSeleccionada(null);
+    setBloqueada(false);
+  }, [indice, preguntas.length, onTerminar]);
 
   const reiniciar = useCallback(() => {
     setIndice(0);

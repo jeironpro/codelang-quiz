@@ -46,6 +46,22 @@ describe('useQuiz', () => {
 
     expect(terminado).toBe(true);
   });
+
+  it('no avanza al acertar: queda bloqueada hasta continuar', () => {
+    const { result } = renderHook(() => useQuiz(preguntas));
+
+    act(() => result.current.responder('A'));
+
+    // Sigue en la primera pregunta y bloqueada mostrando el feedback.
+    expect(result.current.indice).toBe(0);
+    expect(result.current.bloqueada).toBe(true);
+    expect(result.current.seleccionada).toBe('A');
+
+    act(() => result.current.continuar());
+    expect(result.current.indice).toBe(1);
+    expect(result.current.bloqueada).toBe(false);
+    expect(result.current.seleccionada).toBe(null);
+  });
 });
 
 describe('useLocalStorage', () => {

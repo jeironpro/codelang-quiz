@@ -50,16 +50,20 @@ describe('Quiz - feedback', () => {
   it('no muestra la explicación hasta responder', () => {
     renderizarQuiz();
     expect(screen.queryByText(/Acertaste/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/No acertaste/i)).not.toBeInTheDocument();
   });
 
-  it('al acertar avanza a la siguiente pregunta sin mostrar feedback', async () => {
+  it('al acertar muestra feedback y avanza al pulsar siguiente', async () => {
     renderizarQuiz();
     const user = userEvent.setup();
 
     await user.click(screen.getByRole('button', { name: /Un valor fijo/i }));
 
-    // No hay feedback de error y se pasa a la segunda pregunta.
+    // Muestra confirmación de acierto con los puntos ganados.
+    expect(screen.getByText(/Acertaste. \+1 punto/i)).toBeInTheDocument();
     expect(screen.queryByText(/No acertaste/i)).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Siguiente' }));
     expect(screen.getByText('Segunda pregunta')).toBeInTheDocument();
   });
 });
