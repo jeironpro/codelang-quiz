@@ -9,14 +9,14 @@ import NotFound from '../pages/NotFound';
 // El Layout envuelve todas las paginas y las rutas se resuelven por path;
 // la comodilla (*) captura cualquier ruta desconocida hacia NotFound.
 export default function AppRoutes() {
-  return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/resultados" element={<Resultados />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
-  );
+    return (
+        <Layout>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/quiz" element={<Quiz />} />
+                <Route path="/resultados" element={<Resultados />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </Layout>
+    );
 }
