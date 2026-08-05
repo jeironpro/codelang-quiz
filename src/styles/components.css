@@ -45,6 +45,22 @@
   background: var(--color-paper-2);
   color: var(--color-ink);
 }
+/* Item informativo del menu movil; reutiliza el aspecto de un enlace */
+.nav__menu-info {
+  display: none;
+  border: 0;
+  background: none;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  text-align: left;
+  cursor: pointer;
+}
+/* Lado derecho del header: score e informacion agrupados */
+.nav__aside {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
 .nav__score {
   font-family: var(--font-label);
   font-size: var(--text-xs);
@@ -467,8 +483,20 @@
     flex-wrap: wrap;
     row-gap: var(--space-2);
   }
+  /* Orden visual en movil: brand, score y hamburguesa al borde derecho */
+  .nav__brand {
+    order: 1;
+  }
+  .nav__aside {
+    order: 2;
+  }
+  .nav__toggle {
+    display: flex;
+    order: 3;
+  }
   .nav__links {
     display: none;
+    order: 4;
     flex-basis: 100%;
     flex-direction: column;
     gap: var(--space-2);
@@ -482,8 +510,12 @@
   .nav__link {
     padding: var(--space-2) var(--space-3);
   }
-  .nav__toggle {
-    display: flex;
+  /* El boton ? se traslada del header al menu movil */
+  .nav__info {
+    display: none;
+  }
+  .nav__menu-info {
+    display: block;
   }
   .nav__score {
     margin-left: 0;

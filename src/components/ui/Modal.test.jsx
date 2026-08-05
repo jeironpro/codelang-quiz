@@ -61,4 +61,15 @@ describe('Modal informativo de localStorage', () => {
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
+
+  it('se abre desde el item del menu movil', async () => {
+    const user = userEvent.setup();
+    renderizarNavbar();
+
+    // El item informativo vive dentro de los enlaces del menu.
+    await user.click(screen.getByRole('button', { name: /información sobre tus datos/i }));
+
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByText(/localStorage/i)).toBeInTheDocument();
+  });
 });

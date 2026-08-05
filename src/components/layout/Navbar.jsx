@@ -61,24 +61,34 @@ export default function Navbar() {
           >
             Resultados
           </NavLink>
+          {/* Informacion de los datos guardados; solo se muestra dentro del menu movil */}
+          <button
+            type="button"
+            className="nav__link nav__menu-info"
+            aria-haspopup="dialog"
+            aria-expanded={infoAbierta}
+            onClick={() => setInfoAbierta(true)}
+          >
+            Información sobre tus datos
+          </button>
         </nav>
 
-        {/* Insignia con el score acumulado */}
-        <span className="nav__score" aria-label="Score acumulado">
-          {score} pt{score === 1 ? '' : 's'}
-        </span>
-
-        {/* Boton que abre el modal informativo de los datos guardados */}
-        <button
-          type="button"
-          className="nav__info"
-          aria-label="Información sobre los datos guardados"
-          aria-haspopup="dialog"
-          aria-expanded={infoAbierta}
-          onClick={() => setInfoAbierta(true)}
-        >
-          ?
-        </button>
+        {/* Lado derecho: score e informacion (esta ultima solo en desktop) */}
+        <div className="nav__aside">
+          <span className="nav__score" aria-label="Score acumulado">
+            {score} pt{score === 1 ? '' : 's'}
+          </span>
+          <button
+            type="button"
+            className="nav__info"
+            aria-label="Información sobre los datos guardados"
+            aria-haspopup="dialog"
+            aria-expanded={infoAbierta}
+            onClick={() => setInfoAbierta(true)}
+          >
+            ?
+          </button>
+        </div>
       </div>
 
       {/* Modal que explica como y para que se usa localStorage */}
