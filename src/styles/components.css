@@ -73,7 +73,9 @@
   height: 3px;
   border-radius: 2px;
   background: var(--color-ink);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 .nav__toggle[aria-expanded='true'] .nav__bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
