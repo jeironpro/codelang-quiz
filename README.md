@@ -11,6 +11,7 @@ Es frontend-only: los datos viven como ficheros JSON en `public/data/` y el prog
 - Score por dificultad (fácil +1, media +2, difícil +3): acierto suma, fallo resta.
 - Filtros por lenguaje, dificultad y tipo.
 - Historial de partidas y score acumulado persistidos en `localStorage`, con modal informativo en la barra de navegación que explica qué se guarda y dónde.
+- Temporizador por pregunta (30s): al agotarse la pregunta se bloquea y cuenta como fallo.
 - Sistema de diseño **Hum** (skill Hallmark): papel crema, acentos pera/cian/coral, sans redondeada.
 
 ## Stack
@@ -86,7 +87,36 @@ Cada lenguaje tiene un fichero en `public/data/<lenguaje>.json` con un array de 
 yarn test
 ```
 
-Los tests validan el esquema del dataset, la lógica de scoring, los hooks, el comportamiento de la página Quiz (feedback y detención de partida) y el modal informativo de la barra de navegación.
+Los tests validan el esquema del dataset, la lógica de scoring, los hooks, el comportamiento de la página Quiz (feedback, temporizador y detención de partida) y el modal informativo de la barra de navegación.
+
+## Reels de Instagram automáticos
+
+El workflow `reels.yml` genera y publica reels verticales (9:16) con las preguntas del catálogo, sin Playwright: los slides se dibujan con canvas (`@napi-rs/canvas`) replicando el layout de la web (card con pregunta y las cuatro opciones) y se convierten a video con `ffmpeg`. La respuesta **no se muestra** en el video; el caption invita a comentar la letra.
+
+- **Disparo**: manual desde *Actions → Reels Instagram* (inputs `lenguaje` y `cantidad`) o por cron (1 reel aleatorio cada día a las 13:00 UTC).
+- **Publicación**: el mp4 se sube como asset de la release `reels` (URL pública e inmediata) y se publica vía Instagram Graph API (`media_type=REELS` → poll `status_code` → `media_publish`).
+- **Generar sin publicar**:
+  ```bash
+  node scripts/reels/index.mjs --cantidad 1 --lenguaje javascript --solo-local
+  # los mp4 quedan en dist-reels/
+  ```
+
+### Requisitos previos
+
+- Cuenta de Instagram **Business/Creator** vinculada a una página de Facebook.
+- App de Meta con el producto Instagram y permisos `instagram_content_publish` + `instagram_business_basic`.
+- Token de acceso de largo plazo (se refresca cada ~60 días).
+
+### Configuración
+
+Define estos secrets en el repositorio (o variables de entorno localmente, ver `.env.example`):
+
+| Secret | Descripción |
+| --- | --- |
+| `IG_ACCESS_TOKEN` | Token de acceso con permiso de publicación de contenido |
+| `IG_BUSINESS_ID` | Id de la cuenta de Instagram (IG User ID) |
+
+Límites de Meta a tener en cuenta: video ≤ 90s y máx. 25 publicaciones por cuenta cada 24h.
 
 ## Documentación de diseño
 

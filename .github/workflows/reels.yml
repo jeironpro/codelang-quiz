@@ -1,0 +1,49 @@
+name: Reels Instagram
+
+on:
+  workflow_dispatch:
+    inputs:
+      lenguaje:
+        description: 'Lenguaje (aleatorio o un id del catálogo: javascript, python, ...)'
+        required: false
+        default: 'aleatorio'
+        type: string
+      cantidad:
+        description: 'Número de reels a publicar (1-5)'
+        required: false
+        default: '1'
+        type: choice
+        options: ['1', '2', '3', '4', '5']
+  schedule:
+    # Todos los dias a las 13:00 UTC (publica 1 reel aleatorio).
+    - cron: '0 13 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  reels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Activar Corepack
+        run: corepack enable
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+
+      - name: Instalar dependencias
+        run: yarn install --immutable
+
+      - name: Generar y publicar reels
+        run: node scripts/reels/index.mjs
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_BUSINESS_ID: ${{ secrets.IG_BUSINESS_ID }}
+          LENGUAJE: ${{ inputs.lenguaje || 'aleatorio' }}
+          CANTIDAD: ${{ inputs.cantidad || '1' }}
