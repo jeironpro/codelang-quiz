@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useQuizContext } from '../../context/QuizContext';
+import Modal from '../ui/Modal';
 
 // Barra de navegacion superior (via N7 brutal slab).
 // En moviles los enlaces se pliegan tras un boton hamburguesa.
@@ -9,6 +10,8 @@ export default function Navbar() {
   const { score } = useQuizContext();
   // Estado del menu movil: abierto o cerrado.
   const [abierto, setAbierto] = useState(false);
+  // Estado del modal informativo sobre los datos guardados.
+  const [infoAbierta, setInfoAbierta] = useState(false);
 
   // Cierra el menu movil al navegar a un enlace.
   function cerrar() {
@@ -64,7 +67,36 @@ export default function Navbar() {
         <span className="nav__score" aria-label="Score acumulado">
           {score} pt{score === 1 ? '' : 's'}
         </span>
+
+        {/* Boton que abre el modal informativo de los datos guardados */}
+        <button
+          type="button"
+          className="nav__info"
+          aria-label="Información sobre los datos guardados"
+          aria-haspopup="dialog"
+          aria-expanded={infoAbierta}
+          onClick={() => setInfoAbierta(true)}
+        >
+          ?
+        </button>
       </div>
+
+      {/* Modal que explica como y para que se usa localStorage */}
+      <Modal
+        abierto={infoAbierta}
+        onCerrar={() => setInfoAbierta(false)}
+        titulo="Tus datos se guardan en este navegador"
+      >
+        <p>
+          Tu progreso se almacena con <strong>localStorage</strong> en este navegador: el score
+          acumulado y el historial de las últimas 20 partidas.
+        </p>
+        <p>
+          Los datos viven solo en tu dispositivo: no se envían a ningún servidor. Puedes borrarlos
+          cuando quieras desde la configuración de tu navegador (opción «limpiar datos» o «borrar el
+          almacenamiento local»).
+        </p>
+      </Modal>
     </header>
   );
 }
