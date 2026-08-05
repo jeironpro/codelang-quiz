@@ -4,6 +4,7 @@ import { useQuiz } from '../hooks/useQuiz';
 import { useQuizContext } from '../context/QuizContext';
 import CodeBlock from '../components/ui/CodeBlock';
 import { OPCIONES } from '../utils/constants';
+import { puntosDe } from '../utils/scoring';
 
 // Pagina de la partida: muestra cada pregunta y las opciones A/B/C/D.
 // Solo muestra la respuesta correcta cuando el usuario falla.
@@ -113,11 +114,20 @@ export default function Quiz() {
 
         {bloqueada ? (
           <div className="quiz__feedback">
-            <p className="feedback feedback--ko">
-              <strong>No acertaste.</strong> La correcta era la opción {preguntaActual.respuesta}
-              .\u00a0
-              {preguntaActual.explicacion}
-            </p>
+            {seleccionada === preguntaActual.respuesta ? (
+              <p className="feedback feedback--ok">
+                <strong>
+                  Acertaste. +{puntosDe(preguntaActual.dificultad)} punto
+                  {puntosDe(preguntaActual.dificultad) === 1 ? '' : 's'}.
+                </strong>{' '}
+                {preguntaActual.explicacion}
+              </p>
+            ) : (
+              <p className="feedback feedback--ko">
+                <strong>No acertaste.</strong> La correcta era la opción {preguntaActual.respuesta}.{' '}
+                {preguntaActual.explicacion}
+              </p>
+            )}
             <button type="button" className="btn btn--coral" onClick={continuar}>
               {indice >= total - 1 ? 'Ver resultados' : 'Siguiente'}
             </button>
