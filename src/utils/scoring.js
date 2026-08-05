@@ -10,8 +10,3 @@ export function aplicarRespuesta(score, dificultad, esCorrecta) {
   const delta = puntosDe(dificultad);
   return score + (esCorrecta ? delta : -delta);
 }
-
-// Máximo posible de puntos para un conjunto de preguntas.
-export function maximoPosible(preguntas) {
-  return preguntas.reduce((total, pregunta) => total + puntosDe(pregunta.dificultad), 0);
-}

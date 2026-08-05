@@ -6,7 +6,7 @@ Es frontend-only: los datos viven como ficheros JSON en `public/data/` y el prog
 
 ## Características
 
-- Opciones A/B/C/D con feedback **solo si fallas**: al acertar avanzas directo; al fallar se muestra la respuesta correcta y la explicación.
+- Opciones A/B/C/D con feedback tras responder: al acertar muestra los puntos ganados y la explicación; al fallar, la respuesta correcta y la explicación.
 - Score por dificultad (fácil +1, media +2, difícil +3): acierto suma, fallo resta.
 - Filtros por lenguaje, dificultad y tipo.
 - Historial de partidas y score acumulado persistidos en `localStorage`.
@@ -45,7 +45,7 @@ yarn dev
 src/
   components/
     layout/       Navbar, Footer, Layout
-    ui/           Button (css), Spinner, CodeBlock
+    ui/           CodeBlock
   context/        QuizContext (score e historial)
   hooks/          useQuiz, useLocalStorage
   pages/          Home, Quiz, Resultados, NotFound
@@ -85,7 +85,7 @@ Cada lenguaje tiene un fichero en `public/data/<lenguaje>.json` con un array de 
 yarn test
 ```
 
-Los tests validan el esquema del dataset, la lógica de scoring, los hooks y el comportamiento de la página Quiz (feedback solo al fallar).
+Los tests validan el esquema del dataset, la lógica de scoring, los hooks y el comportamiento de la página Quiz (feedback al responder).
 
 ## Documentación de diseño
 

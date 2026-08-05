@@ -41,7 +41,7 @@ export default function Resultados() {
             </p>
           </div>
         ) : (
-          <p className="resultados__vacío">Aún no has jugado ninguna partida.</p>
+          <p className="resultados__vacio">Aún no has jugado ninguna partida.</p>
         )}
 
         {historial.length > 0 ? (
