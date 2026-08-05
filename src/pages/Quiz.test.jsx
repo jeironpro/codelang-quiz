@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -71,5 +71,50 @@ describe('Quiz - feedback', () => {
     // Siguiente lleva a la segunda pregunta del dataset.
     await user.click(screen.getByRole('button', { name: 'Siguiente' }));
     expect(screen.getByText('Segunda pregunta')).toBeInTheDocument();
+  });
+});
+
+describe('Quiz - detener partida', () => {
+  // Arranca cada test sin datos previos en el almacenamiento local.
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
+  it('mantiene deshabilitado el boton de detener sin preguntas respondidas', () => {
+    renderizarQuiz();
+    expect(screen.getByRole('button', { name: 'Detener partida' })).toBeDisabled();
+  });
+
+  it('continuar jugando cierra el modal sin guardar la partida', async () => {
+    const user = userEvent.setup();
+    renderizarQuiz();
+
+    // Se responde para habilitar la detencion y abrir la confirmacion.
+    await user.click(screen.getByRole('button', { name: /Un valor fijo/i }));
+    await user.click(screen.getByRole('button', { name: 'Detener partida' }));
+
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+
+    // Cancelar cierra el modal y no escribe nada en el historial.
+    await user.click(screen.getByRole('button', { name: 'Continuar jugando' }));
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(window.localStorage.getItem('codelang-quiz:historial')).toBeNull();
+  });
+
+  it('detener y guardar conserva la puntuacion parcial', async () => {
+    const user = userEvent.setup();
+    renderizarQuiz();
+
+    // Un acierto en la primera pregunta: +1 punto.
+    await user.click(screen.getByRole('button', { name: /Un valor fijo/i }));
+    await user.click(screen.getByRole('button', { name: 'Detener partida' }));
+    await user.click(screen.getByRole('button', { name: 'Detener y guardar' }));
+
+    // La partida parcial queda registrada con las preguntas respondidas.
+    const historial = JSON.parse(window.localStorage.getItem('codelang-quiz:historial'));
+    expect(historial[0]).toMatchObject({ aciertos: 1, fallos: 0, puntos: 1, total: 1 });
+
+    // El score acumulado conserva los puntos ganados hasta el momento.
+    expect(JSON.parse(window.localStorage.getItem('codelang-quiz:score'))).toBe(1);
   });
 });

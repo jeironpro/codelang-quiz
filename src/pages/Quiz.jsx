@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuiz } from '../hooks/useQuiz';
 import { useQuizContext } from '../context/QuizContext';
 import CodeBlock from '../components/ui/CodeBlock';
+import Modal from '../components/ui/Modal';
 import { OPCIONES } from '../utils/constants';
 import { puntosDe } from '../utils/scoring';
 
@@ -15,6 +17,8 @@ export default function Quiz() {
   // Las preguntas y filtros llegan por el estado de la navegacion desde Home.
   const preguntas = location.state?.preguntas ?? [];
   const filtros = location.state?.filtros ?? {};
+  // Controla la visibilidad del modal de confirmacion para detener la partida.
+  const [confirmarDetencion, setConfirmarDetencion] = useState(false);
 
   const {
     indice,
@@ -25,6 +29,7 @@ export default function Quiz() {
     fallos,
     seleccionada,
     bloqueada,
+    respuestas,
     responder,
     continuar,
   } = useQuiz(preguntas, () => finalizar());
@@ -37,6 +42,20 @@ export default function Quiz() {
       fallos,
       puntos: score,
       total: preguntas.length,
+      lenguaje: filtros.lenguaje,
+      dificultad: filtros.dificultad,
+    });
+    navigate('/resultados', { state: { filtros } });
+  }
+
+  // Detiene la partida conservando el progreso hasta el momento.
+  // Se registra como una partida parcial con las preguntas ya respondidas.
+  function detener() {
+    registrarPartida({
+      aciertos,
+      fallos,
+      puntos: score,
+      total: respuestas.length,
       lenguaje: filtros.lenguaje,
       dificultad: filtros.dificultad,
     });
@@ -64,14 +83,25 @@ export default function Quiz() {
 
   return (
     <div className="quiz">
-      {/* Cabecera de la partida: progreso y score en vivo */}
+      {/* Cabecera de la partida: progreso, score en vivo y detencion */}
       <section className="section quiz__header" aria-label="Progreso">
         <span className="mono-label">
           Pregunta {indice + 1} de {total}
         </span>
-        <span className="quiz__score" aria-label="Score de la partida">
-          {score} pt{Math.abs(score) === 1 ? '' : 's'}
-        </span>
+        <div className="quiz__header-right">
+          {/* Solo permite detener si ya se ha respondido alguna pregunta */}
+          <button
+            type="button"
+            className="btn btn--mint quiz__detener"
+            disabled={respuestas.length === 0}
+            onClick={() => setConfirmarDetencion(true)}
+          >
+            Detener partida
+          </button>
+          <span className="quiz__score" aria-label="Score de la partida">
+            {score} pt{Math.abs(score) === 1 ? '' : 's'}
+          </span>
+        </div>
       </section>
 
       <section className="section quiz__body">
@@ -142,6 +172,31 @@ export default function Quiz() {
           </div>
         ) : null}
       </section>
+
+      {/* Confirmacion antes de detener la partida y guardar el progreso */}
+      <Modal
+        abierto={confirmarDetencion}
+        onCerrar={() => setConfirmarDetencion(false)}
+        titulo="¿Detener la partida?"
+        acciones={
+          <>
+            <button type="button" className="btn" onClick={() => setConfirmarDetencion(false)}>
+              Continuar jugando
+            </button>
+            <button type="button" className="btn btn--coral" onClick={detener}>
+              Detener y guardar
+            </button>
+          </>
+        }
+      >
+        <p>
+          Tu puntuación actual (
+          <strong>
+            {score} pt{Math.abs(score) === 1 ? '' : 's'}
+          </strong>
+          ) se guardará y no podrás continuar esta partida.
+        </p>
+      </Modal>
     </div>
   );
 }

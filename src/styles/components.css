@@ -238,8 +238,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-4);
   padding-top: var(--space-8);
   padding-bottom: var(--space-4);
+}
+.quiz__header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.quiz__detener {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-sm);
 }
 .quiz__score {
   font-family: var(--font-label);
@@ -489,9 +499,13 @@
     padding: var(--space-6);
   }
   .modal__acciones {
-    justify-content: stretch;
+    flex-direction: column;
+    gap: var(--space-3);
   }
   .modal__acciones .btn {
     width: 100%;
+  }
+  .quiz__header {
+    flex-wrap: wrap;
   }
 }
