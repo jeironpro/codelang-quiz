@@ -1,9 +1,10 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { QuizProvider } from '../context/QuizContext';
 import Quiz from './Quiz';
+import { TIEMPO_PREGUNTA } from '../utils/constants';
 
 // Dataset de prueba con dos preguntas para recorrer el flujo del quiz.
 const preguntas = [
@@ -69,6 +70,38 @@ describe('Quiz - feedback', () => {
     expect(screen.queryByText(/No acertaste/i)).not.toBeInTheDocument();
 
     // Siguiente lleva a la segunda pregunta del dataset.
+    await user.click(screen.getByRole('button', { name: 'Siguiente' }));
+    expect(screen.getByText('Segunda pregunta')).toBeInTheDocument();
+  });
+});
+
+describe('Quiz - temporizador', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it('muestra el temporizador con el tiempo completo de la pregunta', () => {
+    renderizarQuiz();
+    expect(screen.getByRole('timer')).toHaveTextContent(`${TIEMPO_PREGUNTA}s`);
+  });
+
+  it('al agotarse el tiempo muestra el feedback de tiempo agotado', async () => {
+    // Solo se falsean los timers del temporizador, no microtasks ni Date,
+    // para no romper el scheduler de React.
+    vi.useFakeTimers({ toFake: ['setInterval', 'clearInterval'] });
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    renderizarQuiz();
+
+    // Se avanza el reloj hasta agotar los segundos de la pregunta.
+    act(() => {
+      vi.advanceTimersByTime(TIEMPO_PREGUNTA * 1000);
+    });
+
+    // El feedback indica que el tiempo se acabo y revela la opcion correcta.
+    expect(screen.getByText(/Se acabó el tiempo/i)).toBeInTheDocument();
+    expect(screen.getByText(/La correcta era la opción A/i)).toBeInTheDocument();
+
+    // Sigue permitiendo continuar a la siguiente pregunta.
     await user.click(screen.getByRole('button', { name: 'Siguiente' }));
     expect(screen.getByText('Segunda pregunta')).toBeInTheDocument();
   });

@@ -29,6 +29,8 @@ export default function Quiz() {
     fallos,
     seleccionada,
     bloqueada,
+    tiempoRestante,
+    tiempoAgotado,
     respuestas,
     responder,
     continuar,
@@ -83,14 +85,25 @@ export default function Quiz() {
 
   // Nombre visible del lenguaje de la pregunta actual, si viene anotado.
   const lenguajeActual = CATALOGO.find((l) => l.id === preguntaActual.lenguaje)?.nombre;
+  // Aviso visual cuando el tiempo se acaba (ultimos segundos de la pregunta).
+  const tiempoUrgente = tiempoRestante <= 5;
 
   return (
     <div className="quiz">
-      {/* Cabecera de la partida: progreso a la izquierda y puntos a la derecha */}
+      {/* Cabecera de la partida: progreso con temporizador y puntos a la derecha */}
       <section className="section quiz__header" aria-label="Progreso">
-        <span className="mono-label">
-          Pregunta {indice + 1} de {total}
-        </span>
+        <div className="quiz__progreso">
+          <span className="mono-label">
+            Pregunta {indice + 1} de {total}
+          </span>
+          <span
+            className={tiempoUrgente ? 'quiz__tiempo is-urgente' : 'quiz__tiempo'}
+            role="timer"
+            aria-label={`Tiempo restante para responder`}
+          >
+            ⏱ {tiempoRestante}s
+          </span>
+        </div>
         <span className="quiz__score" aria-label="Score de la partida">
           {score} pt{Math.abs(score) === 1 ? '' : 's'}
         </span>
@@ -149,10 +162,16 @@ export default function Quiz() {
           Detener partida
         </button>
 
-        {/* Feedback tras responder: acierto o fallo + boton para continuar */}
+        {/* Feedback tras responder: acierto, fallo o tiempo agotado + continuar */}
         {bloqueada ? (
           <div className="quiz__feedback">
-            {seleccionada === preguntaActual.respuesta ? (
+            {tiempoAgotado ? (
+              // Tiempo agotado: la pregunta se bloqueo sin respuesta y cuenta como fallo.
+              <p className="feedback feedback--ko">
+                <strong>Se acabó el tiempo.</strong> La correcta era la opción{' '}
+                {preguntaActual.respuesta}. {preguntaActual.explicacion}
+              </p>
+            ) : seleccionada === preguntaActual.respuesta ? (
               // Acierto: muestra los puntos ganados (1/2/3 segun dificultad) y la explicacion.
               <p className="feedback feedback--ok">
                 <strong>
