@@ -14,6 +14,7 @@ describe('dataset JSON', () => {
   let errores;
 
   beforeAll(() => {
+    // Lee cada JSON del catalogo y los agrupa por id de lenguaje.
     const dataset = {};
     for (const lang of CATALOGO) {
       const path = resolve(directorio, `../../public/data/${lang.id}.json`);
@@ -23,10 +24,12 @@ describe('dataset JSON', () => {
   });
 
   it('no tiene errores de esquema ni ids duplicados', () => {
+    // Los datasets deben pasar la validacion completa sin errores.
     expect(errores).toEqual([]);
   });
 
   it('tiene al menos una pregunta por lenguaje', () => {
+    // Ningun lenguaje del catalogo puede quedar sin contenido.
     for (const lang of CATALOGO) {
       const path = resolve(directorio, `../../public/data/${lang.id}.json`);
       const preguntas = JSON.parse(readFileSync(path, 'utf-8'));

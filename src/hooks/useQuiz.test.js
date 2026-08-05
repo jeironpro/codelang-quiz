@@ -3,6 +3,7 @@ import { renderHook, act } from '@testing-library/react';
 import { useQuiz } from './useQuiz';
 import { useLocalStorage } from './useLocalStorage';
 
+// Dataset de prueba con dos preguntas de distinta dificultad.
 const preguntas = [
   {
     id: '1',
@@ -39,6 +40,7 @@ describe('useQuiz', () => {
     let terminado = false;
     const { result } = renderHook(() => useQuiz(preguntas, () => (terminado = true)));
 
+    // Se responde y continua hasta agotar el dataset.
     act(() => result.current.responder('A'));
     act(() => result.current.continuar());
     act(() => result.current.responder('C'));
@@ -57,6 +59,7 @@ describe('useQuiz', () => {
     expect(result.current.bloqueada).toBe(true);
     expect(result.current.seleccionada).toBe('A');
 
+    // Al continuar avanza y se desbloquea la siguiente.
     act(() => result.current.continuar());
     expect(result.current.indice).toBe(1);
     expect(result.current.bloqueada).toBe(false);
@@ -68,6 +71,7 @@ describe('useLocalStorage', () => {
   it('persiste el valor en localStorage', () => {
     const { result } = renderHook(() => useLocalStorage('clave-test', 0));
     act(() => result.current[1](5));
+    // El valor guardado debe poder leerse de vuelta como JSON.
     expect(JSON.parse(window.localStorage.getItem('clave-test'))).toBe(5);
   });
 });

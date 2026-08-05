@@ -1,5 +1,7 @@
 // Constantes globales de la aplicación: dificultades, tipos y puntajes.
+// Son la fuente de verdad de los filtros y del calculo de puntos.
 
+// Dificultades con su etiqueta visible y los puntos que otorgan.
 export const DIFICULTADES = {
   facil: { label: 'Fácil', puntos: 1 },
   media: { label: 'Media', puntos: 2 },
@@ -12,6 +14,7 @@ export const PUNTOS = Object.fromEntries(
   Object.entries(DIFICULTADES).map(([clave, dato]) => [clave, dato.puntos]),
 );
 
+// Tipos de problema con su etiqueta visible en los chips de filtro.
 export const TIPOS = {
   output: '¿Qué imprime?',
   sintaxis: 'Sintaxis',
@@ -19,7 +22,9 @@ export const TIPOS = {
   concepto: 'Concepto',
 };
 
+// Letras de las opciones de respuesta, siempre las mismas A-D.
 export const OPCIONES = ['A', 'B', 'C', 'D'];
 
+// Claves de localStorage donde se persiste score e historial.
 export const CLAVE_SCORE = 'codelang-quiz:score';
 export const CLAVE_HISTORIAL = 'codelang-quiz:historial';

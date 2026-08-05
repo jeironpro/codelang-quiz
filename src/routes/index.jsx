@@ -6,6 +6,8 @@ import Resultados from '../pages/Resultados';
 import NotFound from '../pages/NotFound';
 
 // Definicion de rutas de la aplicacion.
+// El Layout envuelve todas las paginas y las rutas se resuelven por path;
+// la comodilla (*) captura cualquier ruta desconocida hacia NotFound.
 export default function AppRoutes() {
   return (
     <Layout>

@@ -5,9 +5,12 @@ import { useQuizContext } from '../../context/QuizContext';
 // Barra de navegacion superior (via N7 brutal slab).
 // En moviles los enlaces se pliegan tras un boton hamburguesa.
 export default function Navbar() {
+  // Score acumulado que se muestra como insignia a la derecha.
   const { score } = useQuizContext();
+  // Estado del menu movil: abierto o cerrado.
   const [abierto, setAbierto] = useState(false);
 
+  // Cierra el menu movil al navegar a un enlace.
   function cerrar() {
     setAbierto(false);
   }
@@ -15,9 +18,12 @@ export default function Navbar() {
   return (
     <header className="nav">
       <div className="nav__inner">
+        {/* Marca de la aplicacion, enlaza al inicio */}
         <Link to="/" className="nav__brand" onClick={cerrar}>
           codelang<span className="nav__dot">quiz</span>
         </Link>
+
+        {/* Boton hamburguesa (solo visible en pantallas pequenas); alterna el menu */}
         <button
           type="button"
           className="nav__toggle"
@@ -30,6 +36,8 @@ export default function Navbar() {
           <span className="nav__bar" />
           <span className="nav__bar" />
         </button>
+
+        {/* Enlaces de navegacion; en movil se despliegan con .is-open */}
         <nav
           id="nav-enlaces"
           aria-label="Principal"
@@ -51,6 +59,8 @@ export default function Navbar() {
             Resultados
           </NavLink>
         </nav>
+
+        {/* Insignia con el score acumulado */}
         <span className="nav__score" aria-label="Score acumulado">
           {score} pt{score === 1 ? '' : 's'}
         </span>
