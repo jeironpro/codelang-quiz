@@ -34,8 +34,7 @@ Sistema de diseño de la aplicación, basado en el tema **Hum** del skill de dis
 
 - Base: color edge (borde sólido) + sombra de tierra. La **pulsación es el feedback**.
 - Hover: sube 2px y agranda el edge. Active: baja 3px y reduce el edge.
-- Variantes: `--pear` (primaria), `--coral`, `--cyan`, `--mint`, `--lav`, `--ink`.
-- Estilos: `--soft`, `--outline`.
+- Variantes: `--coral`, `--mint`.
 
 ## Tarjetas
 
@@ -44,12 +43,11 @@ Sistema de diseño de la aplicación, basado en el tema **Hum** del skill de dis
 
 ## Radios y forma
 
-- Cards 20px · inputs 12px · pills 999px. Nunca esquinas cuadradas.
+- Cards 20px · pills 999px. Nunca esquinas cuadradas.
 
 ## Movimiento
 
-- `--ease-spring` para hover de cards, `--ease-snap` para reveals.
-- Celebración: estallido de estrella coral en aciertos.
+- `--ease-spring` para hover de cards.
 - `prefers-reduced-motion: reduce` colapsa todo a transiciones de opacidad/color.
 
 ## Accesibilidad
@@ -67,5 +65,5 @@ Sistema de diseño de la aplicación, basado en el tema **Hum** del skill de dis
 ## Componentes
 
 - `Navbar` (N7 brutal slab), `Footer` (statement).
-- `Button`, `Card`, `Spinner`, `CodeBlock`.
+- `CodeBlock`.
 - Páginas: `Home`, `Quiz`, `Resultados`, `NotFound`.

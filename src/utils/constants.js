@@ -6,12 +6,11 @@ export const DIFICULTADES = {
   dificil: { label: 'Difícil', puntos: 3 },
 };
 
-// Puntos base por dificultad. Correcta suma, errónea resta.
-export const PUNTOS = {
-  facil: 1,
-  media: 2,
-  dificil: 3,
-};
+// Puntos base por dificultad, derivados de DIFICULTADES (única fuente de verdad).
+// Correcta suma, errónea resta.
+export const PUNTOS = Object.fromEntries(
+  Object.entries(DIFICULTADES).map(([clave, dato]) => [clave, dato.puntos]),
+);
 
 export const TIPOS = {
   output: '¿Qué imprime?',

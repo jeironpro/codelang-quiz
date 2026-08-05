@@ -67,16 +67,6 @@ a {
   width: 100%;
 }
 
-.section--band {
-  max-width: none;
-  padding-inline: 0;
-}
-.section--band > * {
-  max-width: var(--shell);
-  margin-inline: auto;
-  padding-inline: var(--page-gutter);
-}
-
 /* Botón Hum: la pulsación es el feedback */
 .btn {
   --btn-face: var(--color-accent);
@@ -141,54 +131,13 @@ a {
   --btn-edge: var(--color-accent-3-deep);
   --btn-cast: oklch(54% 0.22 20 / 0.4);
 }
-.btn--cyan {
-  --btn-face: var(--color-accent-2);
-  --btn-ink: oklch(98% 0.02 235);
-  --btn-edge: var(--color-accent-2-deep);
-  --btn-cast: oklch(52% 0.17 240 / 0.4);
-}
 .btn--mint {
   --btn-face: var(--color-mint);
   --btn-edge: var(--color-mint-deep);
   --btn-cast: oklch(62% 0.16 150 / 0.4);
 }
-.btn--lav {
-  --btn-face: var(--color-lavender);
-  --btn-edge: var(--color-lavender-deep);
-  --btn-cast: oklch(56% 0.18 305 / 0.4);
-}
-.btn--ink {
-  --btn-face: var(--color-ink);
-  --btn-ink: var(--color-paper);
-  --btn-edge: oklch(12% 0.012 250);
-  --btn-cast: oklch(20% 0.012 250 / 0.35);
-}
 
 /* Variantes de estilo */
-.btn--soft {
-  box-shadow: 0 2px 8px -4px oklch(20% 0.012 250 / 0.18);
-}
-.btn--soft:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px -6px oklch(20% 0.012 250 / 0.22);
-}
-.btn--soft:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 3px -2px oklch(20% 0.012 250 / 0.2);
-}
-.btn--outline {
-  background: transparent;
-  color: var(--btn-edge);
-  box-shadow: inset 0 0 0 2px var(--btn-edge);
-}
-.btn--outline:hover {
-  background: color-mix(in oklch, var(--btn-edge) 12%, transparent);
-}
-
-.btn--sm {
-  padding: 0.5rem 1rem;
-  font-size: var(--text-sm);
-}
 .btn--lg {
   padding: 1rem 2rem;
   font-size: var(--text-lg);
@@ -217,35 +166,8 @@ a {
   background: color-mix(in oklch, var(--card-accent, var(--color-accent)) 12%, var(--color-paper));
 }
 
-/* Estrella de celebración (acierto) */
-.star-burst {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, transparent 47%, var(--color-accent-3) 47% 53%, transparent 53%),
-    linear-gradient(0deg, transparent 47%, var(--color-accent-3) 47% 53%, transparent 53%);
-  animation: star-burst 420ms ease-out forwards;
-}
-@keyframes star-burst {
-  0% {
-    transform: scale(0) rotate(0deg);
-    opacity: 1;
-  }
-  60% {
-    transform: scale(1.2) rotate(35deg);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1.4) rotate(45deg);
-    opacity: 0;
-  }
-}
-
 /* Resaltado que sigue al texto */
-em,
-.hl {
+em {
   color: inherit;
   background-image: linear-gradient(var(--hl, oklch(86% 0.18 95 / 0.55)) 0 0);
   background-repeat: no-repeat;
@@ -257,21 +179,6 @@ em,
   font-style: normal;
 }
 
-/* Movimiento suave para reveals */
-@keyframes rise-in {
-  from {
-    transform: translateY(12px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-.rise-in {
-  animation: rise-in 600ms var(--ease-snap) both;
-}
-
 /* Accesibilidad: respeta la preferencia de reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
   .btn,
@@ -281,13 +188,6 @@ em,
   .card:hover {
     transition-duration: 150ms;
     transform: none;
-  }
-  .star-burst {
-    display: none;
-  }
-  .rise-in,
-  [class*='pulse'] {
-    animation: none;
   }
 }
 

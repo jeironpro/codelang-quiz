@@ -1,6 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { validarPregunta, validarDataset } from './validators';
-import { puntosDe, aplicarRespuesta, maximoPosible } from './scoring';
+import { puntosDe, aplicarRespuesta } from './scoring';
 
 describe('validarPregunta', () => {
   it('aprueba una pregunta válida', () => {
@@ -63,10 +63,6 @@ describe('validarDataset', () => {
 });
 
 describe('scoring', () => {
-  beforeEach(() => {
-    // noop para mantener estructura
-  });
-
   it('calcula puntos por dificultad', () => {
     expect(puntosDe('facil')).toBe(1);
     expect(puntosDe('media')).toBe(2);
@@ -77,10 +73,5 @@ describe('scoring', () => {
   it('suma al acertar y resta al fallar', () => {
     expect(aplicarRespuesta(0, 'media', true)).toBe(2);
     expect(aplicarRespuesta(0, 'media', false)).toBe(-2);
-  });
-
-  it('calcula el máximo posible', () => {
-    const preguntas = [{ dificultad: 'facil' }, { dificultad: 'dificil' }, { dificultad: 'media' }];
-    expect(maximoPosible(preguntas)).toBe(6);
   });
 });
