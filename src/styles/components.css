@@ -249,6 +249,25 @@
   padding-top: var(--space-8);
   padding-bottom: var(--space-4);
 }
+/* Progreso de la pregunta junto al temporizador, alineados a la izquierda */
+.quiz__progreso {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+/* Temporizador de la pregunta: chip mono sobre tinta */
+.quiz__tiempo {
+  font-family: var(--font-label);
+  font-size: var(--text-sm);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+/* Ultimos segundos: el chip cambia a rojo para avisar del final */
+.quiz__tiempo.is-urgente {
+  background: var(--color-error);
+}
 .quiz__detener {
   margin-top: var(--space-4);
   align-self: flex-start;

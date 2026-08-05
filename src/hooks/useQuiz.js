@@ -1,7 +1,7 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { aplicarRespuesta } from '../utils/scoring';
 import { barajar } from '../utils/shuffle';
-import { OPCIONES } from '../utils/constants';
+import { OPCIONES, TIEMPO_PREGUNTA } from '../utils/constants';
 
 // Logica central de una partida de quiz.
 // Gestiona el indice, las preguntas, el score y las respuestas dadas.
@@ -21,12 +21,36 @@ export function useQuiz(preguntas, onTerminar) {
   const [seleccionada, setSeleccionada] = useState(null);
   // Bloquea las opciones mientras se muestra el feedback.
   const [bloqueada, setBloqueada] = useState(false);
+  // Segundos restantes para responder la pregunta actual.
+  const [tiempoRestante, setTiempoRestante] = useState(TIEMPO_PREGUNTA);
+  // Marca que el tiempo se agoto en la pregunta actual (cuenta como fallo).
+  const [tiempoAgotado, setTiempoAgotado] = useState(false);
 
   // Pregunta visible, o null si el indice queda fuera de rango.
   const preguntaActual = useMemo(
     () => (preguntasBarajadas.length ? preguntasBarajadas[indice] : null),
     [preguntasBarajadas, indice],
   );
+
+  // Cuenta atras: un tick por segundo mientras la pregunta no este bloqueada.
+  // Se reinicia al cambiar de pregunta y se limpia al responder.
+  useEffect(() => {
+    if (bloqueada || !preguntaActual) return undefined;
+    setTiempoRestante(TIEMPO_PREGUNTA);
+    setTiempoAgotado(false);
+    const id = setInterval(() => {
+      setTiempoRestante((t) => (t > 1 ? t - 1 : 0));
+    }, 1000);
+    return () => clearInterval(id);
+  }, [indice, bloqueada, preguntaActual]);
+
+  // Al llegar a cero, la pregunta se bloquea y cuenta como fallo.
+  useEffect(() => {
+    if (tiempoRestante > 0 || bloqueada || !preguntaActual) return;
+    setBloqueada(true);
+    setTiempoAgotado(true);
+    setRespuestas((prev) => [...prev, { ...preguntaActual, letra: null, esCorrecta: false }]);
+  }, [tiempoRestante, bloqueada, preguntaActual]);
 
   // Score acumulado: suma puntos por acierto y resta por fallo.
   const score = useMemo(
@@ -77,6 +101,8 @@ export function useQuiz(preguntas, onTerminar) {
     fallos,
     seleccionada,
     bloqueada,
+    tiempoRestante,
+    tiempoAgotado,
     respuestas,
     responder,
     continuar,

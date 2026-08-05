@@ -25,6 +25,9 @@ export const TIPOS = {
 // Letras de las opciones de respuesta, siempre las mismas A-D.
 export const OPCIONES = ['A', 'B', 'C', 'D'];
 
+// Segundos disponibles para responder cada pregunta.
+export const TIEMPO_PREGUNTA = 30;
+
 // Claves de localStorage donde se persiste score e historial.
 export const CLAVE_SCORE = 'codelang-quiz:score';
 export const CLAVE_HISTORIAL = 'codelang-quiz:historial';
