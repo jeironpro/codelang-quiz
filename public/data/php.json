@@ -1,0 +1,137 @@
+[
+  {
+    "id": "php-001",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo se imprime un texto en pantalla?",
+    "codigo": "",
+    "opciones": {
+      "A": "echo \"Hola\";",
+      "B": "console.log(\"Hola\");",
+      "C": "printl(\"Hola\");",
+      "D": "write(\"Hola\");"
+    },
+    "respuesta": "A",
+    "explicacion": "echo es una construcción del lenguaje PHP para imprimir texto."
+  },
+  {
+    "id": "php-002",
+    "dificultad": "facil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué símbolo inicia el nombre de toda variable en PHP?",
+    "codigo": "",
+    "opciones": {
+      "A": "$",
+      "B": "#",
+      "C": "@",
+      "D": "%"
+    },
+    "respuesta": "A",
+    "explicacion": "En PHP todas las variables empiezan por el signo $, por ejemplo $nombre."
+  },
+  {
+    "id": "php-003",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "echo 2 + \"3\";",
+    "opciones": {
+      "A": "5",
+      "B": "23",
+      "C": "2 + 3",
+      "D": "Error"
+    },
+    "respuesta": "A",
+    "explicacion": "El operador + convierte la cadena numérica a entero y suma: 2 + 3 = 5. La concatenación usa el punto."
+  },
+  {
+    "id": "php-004",
+    "dificultad": "media",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo se declara una función?",
+    "codigo": "",
+    "opciones": {
+      "A": "function saludar() { }",
+      "B": "def saludar() { }",
+      "C": "func saludar() { }",
+      "D": "sub saludar() { }"
+    },
+    "respuesta": "A",
+    "explicacion": "En PHP las funciones se declaran con la palabra clave function."
+  },
+  {
+    "id": "php-005",
+    "dificultad": "media",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "echo \"a\" . \"b\";",
+    "opciones": {
+      "A": "ab",
+      "B": "a + b",
+      "C": "b",
+      "D": "Error"
+    },
+    "respuesta": "A",
+    "explicacion": "El punto es el operador de concatenación de cadenas en PHP, así que une \"a\" y \"b\"."
+  },
+  {
+    "id": "php-006",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Por qué falla este código?",
+    "codigo": "$nombre = \"Ana\";\necho nombre;",
+    "opciones": {
+      "A": "Falta la $ al usar la variable",
+      "B": "nombre no está definida",
+      "C": "Faltan comillas",
+      "D": "echo no existe"
+    },
+    "respuesta": "A",
+    "explicacion": "Para leer la variable hace falta el signo $: echo $nombre;"
+  },
+  {
+    "id": "php-007",
+    "dificultad": "dificil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cuál es la forma natural de recorrer un array?",
+    "codigo": "",
+    "opciones": {
+      "A": "foreach ($items as $item) { }",
+      "B": "for item in items { }",
+      "C": "each($items) do { }",
+      "D": "iterate($items) { }"
+    },
+    "respuesta": "A",
+    "explicacion": "foreach recorre arrays de forma natural en PHP, sin gestionar índices manualmente."
+  },
+  {
+    "id": "php-008",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué diferencia hay entre == y ===?",
+    "codigo": "",
+    "opciones": {
+      "A": "=== compara tipo y valor",
+      "B": "== compara tipo y valor",
+      "C": "Son idénticos",
+      "D": "=== solo compara tipos"
+    },
+    "respuesta": "A",
+    "explicacion": "=== (identidad) exige que tipo y valor coincidan; == aplica conversiones automáticas."
+  },
+  {
+    "id": "php-009",
+    "dificultad": "dificil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "$x = 5;\necho $x == \"5\" ? \"igual\" : \"distinto\";",
+    "opciones": {
+      "A": "igual",
+      "B": "distinto",
+      "C": "Error",
+      "D": "5"
+    },
+    "respuesta": "A",
+    "explicacion": "== compara valores convirtiendo el tipo, por eso 5 y \"5\" son iguales."
+  }
+]
