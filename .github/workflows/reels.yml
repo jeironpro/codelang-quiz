@@ -24,6 +24,11 @@ permissions:
 jobs:
   reels:
     runs-on: ubuntu-latest
+    env:
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      IG_BUSINESS_ID: ${{ secrets.IG_BUSINESS_ID }}
+      LENGUAJE: ${{ inputs.lenguaje || 'aleatorio' }}
+      CANTIDAD: ${{ inputs.cantidad || '1' }}
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
@@ -40,10 +45,10 @@ jobs:
       - name: Instalar dependencias
         run: yarn install --immutable
 
+      - name: Instalar ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
       - name: Generar y publicar reels
         run: yarn node scripts/reels/index.mjs
-        env:
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IG_BUSINESS_ID: ${{ secrets.IG_BUSINESS_ID }}
-          LENGUAJE: ${{ inputs.lenguaje || 'aleatorio' }}
-          CANTIDAD: ${{ inputs.cantidad || '1' }}
