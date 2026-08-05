@@ -17,8 +17,6 @@ on:
   schedule:
     # Todos los dias a las 13:00 UTC (publica 1 reel aleatorio).
     - cron: '0 13 * * *'
-  pull_request:
-    branches: [main]
 
 permissions:
   contents: write
@@ -52,10 +50,5 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ffmpeg
 
-      - name: Generar reels (solo local en PR)
-        if: github.event_name == 'pull_request'
-        run: yarn node scripts/reels/index.mjs --solo-local
-
       - name: Generar y publicar reels
-        if: github.event_name != 'pull_request'
         run: yarn node scripts/reels/index.mjs
