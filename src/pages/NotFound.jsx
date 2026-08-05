@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 // Pagina de error para rutas no existentes.
+// Ofrece un enlace de vuelta al inicio como unica accion.
 export default function NotFound() {
   return (
     <div className="home">

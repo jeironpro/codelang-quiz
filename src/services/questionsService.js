@@ -1,6 +1,7 @@
 // Módulo de acceso a los datos de preguntas.
 // Cada fichero JSON del catálogo vive en public/data/ y se carga en local.
 
+// Catalogos de lenguajes disponibles, con el color del chip para la Home.
 export const CATALOGO = [
   { id: 'javascript', nombre: 'JavaScript', color: 'accent' },
   { id: 'typescript', nombre: 'TypeScript', color: 'accent-2' },
@@ -17,6 +18,7 @@ export const CATALOGO = [
 ];
 
 // Carga el dataset completo de todos los lenguajes en paralelo.
+// Devuelve solo los lenguajes que se cargaron correctamente (allSettled).
 export async function cargarTodasLasPreguntas() {
   const resultados = await Promise.allSettled(
     CATALOGO.map(async (lenguaje) => {
@@ -28,11 +30,12 @@ export async function cargarTodasLasPreguntas() {
     }),
   );
 
+  // Descarta los lenguajes que fallaron y deja solo los que resolvieron.
   return resultados.filter((r) => r.status === 'fulfilled').map((r) => r.value);
 }
 
 // Filtra las preguntas por dificultad, tipo y lenguaje.
-// Cualquier filtro vacío se ignora.
+// Cualquier filtro vacío se ignora; los tres se aplican a la vez.
 export function filtrarPreguntas(dataset, { dificultad = '', tipo = '', lenguaje = '' } = {}) {
   return dataset.preguntas.filter((pregunta) => {
     if (dificultad && pregunta.dificultad !== dificultad) return false;

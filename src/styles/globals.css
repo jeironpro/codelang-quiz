@@ -11,10 +11,12 @@
   box-sizing: border-box;
 }
 
+/* Reset base: sin desbordes laterales ni scroll horizontal */
 html {
   overflow-x: clip;
 }
 
+/* Estilos de la página: fondo paper, tinta y tipografía del tema */
 body {
   margin: 0;
   background: var(--color-paper);
@@ -28,22 +30,26 @@ body {
   overflow-x: clip;
 }
 
+/* Raíz: ocupa toda la altura para que el footer quede abajo */
 #root {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
 
+/* Multimedia contenida en su contenedor */
 img,
 svg {
   display: block;
   max-width: 100%;
 }
 
+/* Enlaces con el acento azul del tema */
 a {
   color: var(--color-accent-2-deep);
 }
 
+/* Foco visible para navegación por teclado */
 :focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
