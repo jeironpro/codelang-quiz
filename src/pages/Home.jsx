@@ -22,8 +22,12 @@ export default function Home() {
     try {
       // Carga todo el catalogo y filtra por los criterios elegidos.
       const dataset = await cargarTodasLasPreguntas();
+      // Cada pregunta recuerda su lenguaje para mostrarlo durante la partida.
       const disponibles = dataset.flatMap((d) =>
-        filtrarPreguntas(d, { dificultad, tipo, lenguaje }),
+        filtrarPreguntas(d, { dificultad, tipo, lenguaje }).map((pregunta) => ({
+          ...pregunta,
+          lenguaje: d.lenguaje,
+        })),
       );
 
       // Sin resultados avisa y no navega.

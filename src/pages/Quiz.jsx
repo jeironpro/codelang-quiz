@@ -4,7 +4,7 @@ import { useQuiz } from '../hooks/useQuiz';
 import { useQuizContext } from '../context/QuizContext';
 import CodeBlock from '../components/ui/CodeBlock';
 import Modal from '../components/ui/Modal';
-import { OPCIONES } from '../utils/constants';
+import { CATALOGO } from '../services/questionsService';
 import { puntosDe } from '../utils/scoring';
 
 // Pagina de la partida: muestra cada pregunta y las opciones A/B/C/D.
@@ -81,33 +81,26 @@ export default function Quiz() {
     return <div className="section mono-label">Partida terminada.</div>;
   }
 
+  // Nombre visible del lenguaje de la pregunta actual, si viene anotado.
+  const lenguajeActual = CATALOGO.find((l) => l.id === preguntaActual.lenguaje)?.nombre;
+
   return (
     <div className="quiz">
-      {/* Cabecera de la partida: progreso, score en vivo y detencion */}
+      {/* Cabecera de la partida: progreso a la izquierda y puntos a la derecha */}
       <section className="section quiz__header" aria-label="Progreso">
         <span className="mono-label">
           Pregunta {indice + 1} de {total}
         </span>
-        <div className="quiz__header-right">
-          {/* Solo permite detener si ya se ha respondido alguna pregunta */}
-          <button
-            type="button"
-            className="btn btn--mint quiz__detener"
-            disabled={respuestas.length === 0}
-            onClick={() => setConfirmarDetencion(true)}
-          >
-            Detener partida
-          </button>
-          <span className="quiz__score" aria-label="Score de la partida">
-            {score} pt{Math.abs(score) === 1 ? '' : 's'}
-          </span>
-        </div>
+        <span className="quiz__score" aria-label="Score de la partida">
+          {score} pt{Math.abs(score) === 1 ? '' : 's'}
+        </span>
       </section>
 
       <section className="section quiz__body">
         {/* Enunciado de la pregunta con su codigo, si tiene */}
         <div className="card quiz__pregunta">
           <span className="mono-label quiz__tag">
+            {lenguajeActual ? `${lenguajeActual} · ` : ''}
             {preguntaActual.tipo} · {preguntaActual.dificultad}
           </span>
           <h2 className="quiz__texto">{preguntaActual.pregunta}</h2>
@@ -116,9 +109,9 @@ export default function Quiz() {
           ) : null}
         </div>
 
-        {/* Opciones A/B/C/D; al responder quedan deshabilitadas y se colorean */}
+        {/* Opciones A/B/C/D; el orden se baraja por partida y se colorean al responder */}
         <div className="quiz__opciones" role="group" aria-label="Opciones de respuesta">
-          {OPCIONES.map((letra) => {
+          {preguntaActual.orden.map((letra) => {
             // La letra correcta se marca solo cuando la pregunta esta bloqueada.
             const esCorrecta = letra === preguntaActual.respuesta;
 
@@ -145,6 +138,16 @@ export default function Quiz() {
             );
           })}
         </div>
+
+        {/* Detener partida: solo permite detener si ya se ha respondido algo */}
+        <button
+          type="button"
+          className="btn btn--mint quiz__detener"
+          disabled={respuestas.length === 0}
+          onClick={() => setConfirmarDetencion(true)}
+        >
+          Detener partida
+        </button>
 
         {/* Feedback tras responder: acierto o fallo + boton para continuar */}
         {bloqueada ? (

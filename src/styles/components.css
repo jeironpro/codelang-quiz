@@ -55,20 +55,11 @@
   text-align: left;
   cursor: pointer;
 }
-/* Lado derecho del header: score e informacion agrupados */
+/* Lado derecho del header: informacion agrupada */
 .nav__aside {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-}
-.nav__score {
-  font-family: var(--font-label);
-  font-size: var(--text-xs);
-  letter-spacing: 0.05em;
-  background: var(--color-ink);
-  color: var(--color-paper);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-pill);
 }
 .nav__info {
   width: 44px;
@@ -258,12 +249,9 @@
   padding-top: var(--space-8);
   padding-bottom: var(--space-4);
 }
-.quiz__header-right {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-}
 .quiz__detener {
+  margin-top: var(--space-4);
+  align-self: flex-start;
   padding: 0.5rem 1rem;
   font-size: var(--text-sm);
 }
@@ -280,6 +268,8 @@
 .quiz__pregunta {
   padding: var(--space-8);
   margin-bottom: var(--space-6);
+  /* Borde del mismo lenguaje que opciones y filtros para destacar el enunciado */
+  border: 2px solid var(--color-paper-3);
 }
 .quiz__tag {
   color: var(--color-accent-2-deep);
@@ -516,9 +506,6 @@
   }
   .nav__menu-info {
     display: block;
-  }
-  .nav__score {
-    margin-left: 0;
   }
   .hero-title {
     font-size: clamp(2rem, 8vw, 2.75rem);
