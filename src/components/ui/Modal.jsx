@@ -5,7 +5,8 @@ import { useEffect, useRef, useId } from 'react';
 // - Enfoca el dialogo al abrir y devuelve el foco al abrirlo.
 // - Bloquea el scroll del body mientras esta abierto.
 // - Atrapa el foco con Tab dentro del dialogo.
-export default function Modal({ abierto, onCerrar, titulo, children }) {
+// Recibe un pie opcional (acciones); por defecto muestra un boton "Entendido".
+export default function Modal({ abierto, onCerrar, titulo, children, acciones }) {
   // Id unico del titulo para el aria-labelledby del dialogo.
   const tituloId = useId();
   // Referencia al dialogo para gestionar el foco.
@@ -73,9 +74,12 @@ export default function Modal({ abierto, onCerrar, titulo, children }) {
         </h2>
         <div className="modal__texto">{children}</div>
         <div className="modal__acciones">
-          <button type="button" className="btn" onClick={onCerrar}>
-            Entendido
-          </button>
+          {/* Si se pasan acciones personalizadas se usan; si no, boton por defecto */}
+          {acciones ?? (
+            <button type="button" className="btn" onClick={onCerrar}>
+              Entendido
+            </button>
+          )}
         </div>
       </div>
     </div>
