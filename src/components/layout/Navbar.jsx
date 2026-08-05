@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { useQuizContext } from '../../context/QuizContext';
 import Modal from '../ui/Modal';
 
 // Barra de navegacion superior (via N7 brutal slab).
 // En moviles los enlaces se pliegan tras un boton hamburguesa.
 export default function Navbar() {
-  // Score acumulado que se muestra como insignia a la derecha.
-  const { score } = useQuizContext();
   // Estado del menu movil: abierto o cerrado.
   const [abierto, setAbierto] = useState(false);
   // Estado del modal informativo sobre los datos guardados.
@@ -73,11 +70,8 @@ export default function Navbar() {
           </button>
         </nav>
 
-        {/* Lado derecho: score e informacion (esta ultima solo en desktop) */}
+        {/* Lado derecho: informacion sobre los datos (solo en desktop) */}
         <div className="nav__aside">
-          <span className="nav__score" aria-label="Score acumulado">
-            {score} pt{score === 1 ? '' : 's'}
-          </span>
           <button
             type="button"
             className="nav__info"
