@@ -6,11 +6,11 @@ import AppRoutes from './routes';
 // El BrowserRouter habilita el enrutado por historial y el QuizProvider
 // comparte el score y el historial de partidas con toda la aplicacion.
 export default function App() {
-  return (
-    <BrowserRouter>
-      <QuizProvider>
-        <AppRoutes />
-      </QuizProvider>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <QuizProvider>
+                <AppRoutes />
+            </QuizProvider>
+        </BrowserRouter>
+    );
 }

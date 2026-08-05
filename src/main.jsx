@@ -8,7 +8,7 @@ import './styles/components.css';
 // Monta el componente raiz en el elemento #root del index.html y
 // envuelve la app en StrictMode para detectar efectos impuros en desarrollo.
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
 );
