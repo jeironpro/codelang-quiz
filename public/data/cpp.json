@@ -1,0 +1,137 @@
+[
+  {
+    "id": "cpp-001",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué encabezado se incluye para usar cout?",
+    "codigo": "",
+    "opciones": {
+      "A": "#include <iostream>",
+      "B": "#include <stdio.h>",
+      "C": "#include <console>",
+      "D": "#include <io>"
+    },
+    "respuesta": "A",
+    "explicacion": "iostream declara cout, cin y el flujo de salida estándar."
+  },
+  {
+    "id": "cpp-002",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "std::cout << 4 + 5;",
+    "opciones": {
+      "A": "9",
+      "B": "45",
+      "C": "4 + 5",
+      "D": "Error"
+    },
+    "respuesta": "A",
+    "explicacion": "Primero se evalúa la suma (4 + 5 = 9) y luego cout la imprime."
+  },
+  {
+    "id": "cpp-003",
+    "dificultad": "facil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué operador envía datos a cout?",
+    "codigo": "",
+    "opciones": {
+      "A": "<<",
+      "B": ">>",
+      "C": "->",
+      "D": "::"
+    },
+    "respuesta": "A",
+    "explicacion": "El operador de inserción << envía un valor al flujo de salida."
+  },
+  {
+    "id": "cpp-004",
+    "dificultad": "media",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo se declara una referencia a una variable?",
+    "codigo": "",
+    "opciones": {
+      "A": "int &ref = a;",
+      "B": "int *ref = a;",
+      "C": "ref int = a;",
+      "D": "int @ref = a;"
+    },
+    "respuesta": "A",
+    "explicacion": "Una referencia se declara con & e inicializa con la variable a la que se ata."
+  },
+  {
+    "id": "cpp-005",
+    "dificultad": "media",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "int a = 5;\nint &r = a;\nr = 10;\nstd::cout << a;",
+    "opciones": {
+      "A": "10",
+      "B": "5",
+      "C": "Error",
+      "D": "r"
+    },
+    "respuesta": "A",
+    "explicacion": "r es una referencia a a; al asignarle 10 cambia el valor de a."
+  },
+  {
+    "id": "cpp-006",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Por qué no compila este código?",
+    "codigo": "int x = 5;\nint x = 6;",
+    "opciones": {
+      "A": "No se puede redeclarar x en el mismo ámbito",
+      "B": "Falta un return",
+      "C": "int no existe",
+      "D": "Faltan llaves"
+    },
+    "respuesta": "A",
+    "explicacion": "Dos variables con el mismo nombre en el mismo ámbito producen un error de redeclaración."
+  },
+  {
+    "id": "cpp-007",
+    "dificultad": "dificil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué palabra clave libera la memoria creada con new?",
+    "codigo": "",
+    "opciones": {
+      "A": "delete",
+      "B": "free",
+      "C": "release",
+      "D": "dispose"
+    },
+    "respuesta": "A",
+    "explicacion": "delete libera la memoria de un objeto creado con new. free es la función equivalente de C."
+  },
+  {
+    "id": "cpp-008",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué diferencia hay entre un puntero y una referencia?",
+    "codigo": "",
+    "opciones": {
+      "A": "El puntero puede reasignarse; la referencia no",
+      "B": "La referencia puede reasignarse; el puntero no",
+      "C": "Son idénticos",
+      "D": "El puntero no puede ser null"
+    },
+    "respuesta": "A",
+    "explicacion": "Una referencia queda atada a su variable de por vida; un puntero puede apuntar a otro objeto."
+  },
+  {
+    "id": "cpp-009",
+    "dificultad": "dificil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "int *p = new int(7);\nstd::cout << *p;\ndelete p;",
+    "opciones": {
+      "A": "7",
+      "B": "0",
+      "C": "La dirección de memoria",
+      "D": "Error"
+    },
+    "respuesta": "A",
+    "explicacion": "new int(7) crea un entero con valor 7 y *p lo desreferencia para imprimirlo."
+  }
+]

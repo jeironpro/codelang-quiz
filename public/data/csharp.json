@@ -1,0 +1,137 @@
+[
+  {
+    "id": "csharp-001",
+    "dificultad": "facil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué palabra clave declara una constante?",
+    "codigo": "",
+    "opciones": {
+      "A": "const",
+      "B": "let",
+      "C": "final",
+      "D": "static"
+    },
+    "respuesta": "A",
+    "explicacion": "const declara una constante en C#; let no existe y final es de otros lenguajes."
+  },
+  {
+    "id": "csharp-002",
+    "dificultad": "facil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "Console.WriteLine(2 * 3);",
+    "opciones": {
+      "A": "6",
+      "B": "23",
+      "C": "5",
+      "D": "Error"
+    },
+    "respuesta": "A",
+    "explicacion": "El operador * multiplica los números: 2 * 3 = 6."
+  },
+  {
+    "id": "csharp-003",
+    "dificultad": "facil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué hace Console.ReadLine()?",
+    "codigo": "",
+    "opciones": {
+      "A": "Lee una línea de la entrada",
+      "B": "Imprime texto en consola",
+      "C": "Borra la consola",
+      "D": "Espera un segundo"
+    },
+    "respuesta": "A",
+    "explicacion": "ReadLine() lee la siguiente línea de la entrada estándar y la devuelve como cadena."
+  },
+  {
+    "id": "csharp-004",
+    "dificultad": "media",
+    "tipo": "sintaxis",
+    "pregunta": "¿Cómo se define una clase?",
+    "codigo": "",
+    "opciones": {
+      "A": "class Persona { }",
+      "B": "def Persona { }",
+      "C": "clase Persona { }",
+      "D": "struct Persona { }"
+    },
+    "respuesta": "A",
+    "explicacion": "En C# las clases se declaran con la palabra clave class. struct define un tipo de valor, no una clase."
+  },
+  {
+    "id": "csharp-005",
+    "dificultad": "media",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "int x = 7 % 3;\nConsole.WriteLine(x);",
+    "opciones": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "0"
+    },
+    "respuesta": "A",
+    "explicacion": "El operador % devuelve el resto de la división entera: 7 % 3 = 1."
+  },
+  {
+    "id": "csharp-006",
+    "dificultad": "media",
+    "tipo": "bug",
+    "pregunta": "¿Por qué no compila este código?",
+    "codigo": "int x = \"5\";",
+    "opciones": {
+      "A": "No se puede asignar un string a un int",
+      "B": "Falta un punto y coma",
+      "C": "int no existe",
+      "D": "Faltan llaves"
+    },
+    "respuesta": "A",
+    "explicacion": "C# es fuertemente tipado: no asigna implícitamente una cadena a un entero sin conversión."
+  },
+  {
+    "id": "csharp-007",
+    "dificultad": "dificil",
+    "tipo": "sintaxis",
+    "pregunta": "¿Qué modificador impide que una clase pueda heredarse?",
+    "codigo": "",
+    "opciones": {
+      "A": "sealed",
+      "B": "final",
+      "C": "static",
+      "D": "abstract"
+    },
+    "respuesta": "A",
+    "explicacion": "sealed sella la clase e impide la herencia. final es de otros lenguajes y abstract obliga a heredar."
+  },
+  {
+    "id": "csharp-008",
+    "dificultad": "dificil",
+    "tipo": "concepto",
+    "pregunta": "¿Qué diferencia hay entre string y StringBuilder?",
+    "codigo": "",
+    "opciones": {
+      "A": "StringBuilder es mutable y eficiente al concatenar",
+      "B": "string es mutable",
+      "C": "Son exactamente iguales",
+      "D": "StringBuilder solo guarda números"
+    },
+    "respuesta": "A",
+    "explicacion": "string es inmutable; cada concatenación crea una nueva. StringBuilder muta el buffer, ideal para muchos cambios."
+  },
+  {
+    "id": "csharp-009",
+    "dificultad": "dificil",
+    "tipo": "output",
+    "pregunta": "¿Qué imprime este código?",
+    "codigo": "var lista = new List<int> { 1, 2, 3 };\nConsole.WriteLine(lista.Count);",
+    "opciones": {
+      "A": "3",
+      "B": "2",
+      "C": "1",
+      "D": "0"
+    },
+    "respuesta": "A",
+    "explicacion": "Count devuelve el número de elementos de la lista, que son 3."
+  }
+]
