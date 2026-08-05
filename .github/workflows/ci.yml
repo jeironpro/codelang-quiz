@@ -31,12 +31,6 @@ jobs:
       - name: Verificar formato
         run: yarn format:check
 
-      - name: Instalar herramientas de media (ImageMagick + Pillow)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y imagemagick
-          pip3 install --quiet Pillow
-
       - name: Tests
         run: yarn test
 
