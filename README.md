@@ -9,7 +9,7 @@ Es frontend-only: los datos viven como ficheros JSON en `public/data/` y el prog
 - Opciones A/B/C/D con feedback tras responder: al acertar muestra los puntos ganados y la explicación; al fallar, la respuesta correcta y la explicación.
 - Score por dificultad (fácil +1, media +2, difícil +3): acierto suma, fallo resta.
 - Filtros por lenguaje, dificultad y tipo.
-- Historial de partidas y score acumulado persistidos en `localStorage`.
+- Historial de partidas y score acumulado persistidos en `localStorage`, con modal informativo en la barra de navegación que explica qué se guarda y dónde.
 - Sistema de diseño **Hum** (skill Hallmark): papel crema, acentos pera/cian/coral, sans redondeada.
 
 ## Stack
@@ -85,7 +85,7 @@ Cada lenguaje tiene un fichero en `public/data/<lenguaje>.json` con un array de 
 yarn test
 ```
 
-Los tests validan el esquema del dataset, la lógica de scoring, los hooks y el comportamiento de la página Quiz (feedback al responder).
+Los tests validan el esquema del dataset, la lógica de scoring, los hooks, el comportamiento de la página Quiz (feedback al responder) y el modal informativo de la barra de navegación.
 
 ## Documentación de diseño
 

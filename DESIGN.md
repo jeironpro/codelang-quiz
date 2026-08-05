@@ -66,4 +66,5 @@ Sistema de diseño de la aplicación, basado en el tema **Hum** del skill de dis
 
 - `Navbar` (N7 brutal slab), `Footer` (statement).
 - `CodeBlock`.
+- `Modal` (diálogo accesible): fondo oscuro, `Escape`/backdrop/«Entendido» para cerrar, foco atrapado y restaurado al abrirlo, scroll del body bloqueado mientras está abierto.
 - Páginas: `Home`, `Quiz`, `Resultados`, `NotFound`.

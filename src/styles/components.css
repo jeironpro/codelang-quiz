@@ -54,6 +54,26 @@
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-pill);
 }
+.nav__info {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-pill);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-label);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 160ms,
+    color 160ms;
+}
+.nav__info:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
 .nav__toggle {
   display: none;
   flex-direction: column;
@@ -387,6 +407,50 @@
   color: var(--color-accent-3);
 }
 
+/* --- Modal --- */
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--page-gutter);
+  background: oklch(20% 0.012 250 / 0.55);
+}
+.modal__dialog {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card-hover);
+  max-width: 34rem;
+  width: 100%;
+  padding: var(--space-8);
+}
+.modal__titulo {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-4);
+  line-height: 1.2;
+}
+.modal__texto {
+  color: var(--color-ink-2);
+  line-height: 1.6;
+}
+.modal__texto p {
+  margin: 0 0 var(--space-4);
+}
+.modal__texto p:last-child {
+  margin-bottom: 0;
+}
+.modal__acciones {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* --- Responsive --- */
 @media (max-width: 640px) {
   .nav__inner {
@@ -420,5 +484,14 @@
   .opcion {
     font-size: var(--text-base);
     padding: var(--space-3) var(--space-4);
+  }
+  .modal__dialog {
+    padding: var(--space-6);
+  }
+  .modal__acciones {
+    justify-content: stretch;
+  }
+  .modal__acciones .btn {
+    width: 100%;
   }
 }
